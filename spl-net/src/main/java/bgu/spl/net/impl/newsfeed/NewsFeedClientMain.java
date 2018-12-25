@@ -2,6 +2,8 @@ package bgu.spl.net.impl.newsfeed;
 
 import bgu.spl.net.impl.rci.RCIClient;
 
+import java.util.Arrays;
+
 public class NewsFeedClientMain {
 
     public static void main(String[] args) throws Exception {
@@ -36,7 +38,6 @@ public class NewsFeedClientMain {
                     "THE CAKE IS A LIE!!"));
             c.receive(); //ok
         }
-
     }
 
     private static void runSecondClient(String host) throws Exception {
