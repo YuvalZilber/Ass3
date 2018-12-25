@@ -31,8 +31,7 @@ public class NewsFeedClientMain {
 
             c.send(new PublishNewsCommand(
                     "headlines",
-                    "THE CAKE IS A LIE!"));
-
+                    "THE CAKE IS A LIE!!"));
             c.receive(); //ok
         }
 
