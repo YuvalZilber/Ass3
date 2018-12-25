@@ -10,6 +10,8 @@ public class NewsFeedClientMain {
         }
 
 //        System.out.println("running clients");
+        runSecondClient(args[0]);
+        System.out.println("run sender!");
         runFirstClient(args[0]);
         runSecondClient(args[0]);
         runThirdClient(args[0]);

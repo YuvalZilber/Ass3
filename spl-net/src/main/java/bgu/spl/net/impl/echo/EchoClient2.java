@@ -1,19 +1,15 @@
 package bgu.spl.net.impl.echo;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
+import java.io.*;
 import java.net.Socket;
 import java.util.Arrays;
 
-public class EchoClient {
+public class EchoClient2 {
 
     public static void main(String[] args) throws IOException {
         System.out.println(Arrays.toString(args));
         if (args.length == 0) {
-            args = new String[]{"localhost", "111"};
+            args = new String[]{"localhost", "222"};
         }
 
         if (args.length < 2) {
@@ -26,7 +22,6 @@ public class EchoClient {
              BufferedReader in = new BufferedReader(new InputStreamReader(sock.getInputStream()));
              BufferedWriter out = new BufferedWriter(new OutputStreamWriter(sock.getOutputStream()))) {
             while (true) {
-
                 out.write(args[1]);
                 out.newLine();
                 out.flush();
