@@ -5,6 +5,12 @@ import bgu.spl.net.impl.rci.ObjectEncoderDecoder;
 import bgu.spl.net.impl.rci.RemoteCommandInvocationProtocol;
 import bgu.spl.net.srv.Server;
 
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.nio.ByteBuffer;
+import java.util.HashMap;
+
 public class NewsFeedServerMain {
 
     public static void main(String[] args) {
@@ -18,11 +24,13 @@ public class NewsFeedServerMain {
                 ObjectEncoderDecoder::new //message encoder decoder factory
         ).serve();
 */
+
         Server.reactor(
                 Runtime.getRuntime().availableProcessors(),
                 7777, //port
-                () ->  new RemoteCommandInvocationProtocol<>(feed), //protocol factory
+                () -> new RemoteCommandInvocationProtocol<>(feed), //protocol factory
                 ObjectEncoderDecoder::new //message encoder decoder factory
         ).serve();
     }
+
 }

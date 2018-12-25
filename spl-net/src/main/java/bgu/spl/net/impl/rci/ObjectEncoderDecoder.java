@@ -20,6 +20,7 @@ public class ObjectEncoderDecoder implements MessageEncoderDecoder<Serializable>
 
     @Override
     public Serializable decodeNextByte(byte nextByte) {
+
         //System.out.println("start decode "+nextByte+" status: "+lengthBuffer.toString());
         if (objectBytes == null) { //indicates that we are still reading the length
             lengthBuffer.put(nextByte);

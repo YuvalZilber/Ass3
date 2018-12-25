@@ -1,6 +1,7 @@
 package bgu.spl.net.impl.echo;
 
 import bgu.spl.net.api.MessageEncoderDecoder;
+import bgu.spl.net.todoUtils;
 
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
@@ -16,6 +17,7 @@ public class LineMessageEncoderDecoder implements MessageEncoderDecoder<String> 
         //this allow us to do the following comparison
 
         if (nextByte == '\n') {
+
             String str = popString();
             return str;
         }
@@ -40,8 +42,10 @@ public class LineMessageEncoderDecoder implements MessageEncoderDecoder<String> 
     private String popString() {
         //notice that we explicitly requesting that the string will be decoded from UTF-8
         //this is not actually required as it is the default encoding in java.
+        //String result = new String(bytes, 0, len, StandardCharsets.UTF_8);
         String result = new String(bytes, 0, len, StandardCharsets.UTF_8);
         len = 0;
         return result;
     }
+
 }
