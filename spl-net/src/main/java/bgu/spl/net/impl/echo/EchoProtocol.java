@@ -23,6 +23,7 @@ public class EchoProtocol implements BidiMessagingProtocol<String> {
         String answer = createEcho(msg);
         System.out.println("[" + LocalDateTime.now() + "] send: " + answer);
         connections.send(id, answer);
+        if (shouldTerminate) connections.disconnect(id);
     }
 
     private String createEcho(String message) {

@@ -10,7 +10,7 @@ import java.util.Map;
 public class ConnectionsImpl<T> implements Connections<T> {
     private HashMap<Integer, ConnectionHandler<T>> clients = new HashMap<>();
     private int id = -1;
-
+    private boolean isCleaning = false;
     @Override
     public boolean send(int connectionId, T msg) {
         try {
@@ -28,9 +28,14 @@ public class ConnectionsImpl<T> implements Connections<T> {
 
     @Override
     public void disconnect(int connectionId) {
-        try (ConnectionHandler<T> client = clients.remove(connectionId)) {
-        } catch (IOException ignored) {
-        }
+        //try {
+        clients.remove(connectionId);
+        //    try {
+//            } finally {
+//                client.close();
+//            }
+//        } catch (IOException ignored) {
+//        }
     }
 
     @Override
@@ -52,13 +57,7 @@ public class ConnectionsImpl<T> implements Connections<T> {
 
     @Override
     public int add(ConnectionHandler<T> connection) {
-        HashMap<Integer, ConnectionHandler<T>> copy = new HashMap<>(clients);
-        for (Map.Entry<Integer, ConnectionHandler<T>> entry : copy.entrySet()) {
-            IsCloseable ic = (IsCloseable) entry.getValue();
-            if (ic.isClosed()) {
-                disconnect(entry.getKey());
-            }
-        }
+        cleanClosed();
         synchronized (clients) {
             if (!clients.containsValue(connection)) {
                 clients.put(++id, connection);
@@ -70,6 +69,16 @@ public class ConnectionsImpl<T> implements Connections<T> {
                 return entry.getKey();
 
         return -1;
+    }
+
+    private void cleanClosed() {
+        HashMap<Integer, ConnectionHandler<T>> copy = new HashMap<>(clients);
+        for (Map.Entry<Integer, ConnectionHandler<T>> entry : copy.entrySet()) {
+            IsCloseable ic = (IsCloseable) entry.getValue();
+            if (ic.isClosed()) {
+                disconnect(entry.getKey());
+            }
+        }
     }
 
     @Override

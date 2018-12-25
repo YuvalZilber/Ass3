@@ -38,17 +38,15 @@ public class BlockingConnectionHandler<T> implements Runnable, ConnectionHandler
                     protocol.process(nextMessage);
                 }
             }
-            if (protocol.shouldTerminate()) close();
         } catch (IOException ex) {
             ex.printStackTrace();
         }
-
     }
 
     @Override
     public void close() throws IOException {
-        connected = false;
         sock.close();
+        connected = false;
     }
 
     @Override
@@ -63,13 +61,8 @@ public class BlockingConnectionHandler<T> implements Runnable, ConnectionHandler
     }
 
     public boolean isClosed() {//maybe must delete
-        boolean output = !connected || sock.isClosed() || protocol.shouldTerminate();
-        if (output) {
-            try {
-                close();
-            } catch (IOException ignore) {
-            }
-        }
+        boolean output = sock.isClosed();
+        connected = !output;
         return output;
     }
 
