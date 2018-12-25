@@ -3,12 +3,9 @@ package bgu.spl.net.srv;
 import bgu.spl.net.api.bidi.Connections;
 import bgu.spl.net.srv.bidi.ConnectionHandler;
 
-import java.io.Closeable;
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 
 public class ConnectionsImpl<T> implements Connections<T> {
     private HashMap<Integer, ConnectionHandler<T>> clients = new HashMap<>();
