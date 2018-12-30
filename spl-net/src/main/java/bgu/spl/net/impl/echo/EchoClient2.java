@@ -1,10 +1,7 @@
 package bgu.spl.net.impl.echo;
 
-import java.io.*;
-import java.net.Socket;
-import java.util.Arrays;
+import java.io.IOException;
 
-import static bgu.spl.net.impl.echo.EchoUtils.sendEchoMessages;
 
 public class EchoClient2 {
 
@@ -20,7 +17,7 @@ public class EchoClient2 {
         }
 
         //BufferedReader and BufferedWriter automatically using UTF-8 encoding
-        sendEchoMessages(args, "b");
+        new EchoUtils().sendEchoMessages(args, "b");
         return;
     }
 
