@@ -10,6 +10,4 @@ import java.io.Closeable;
 /**
  * The ConnectionHandler interface for Message of type T
  */
-public interface redConnectionHandler<T> extends Closeable, bgu.spl.net.srv.bidi.ConnectionHandler {
-
-}
+public interface redConnectionHandler<T> extends Closeable, bgu.spl.net.srv.bidi.ConnectionHandler {}

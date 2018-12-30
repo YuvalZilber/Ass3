@@ -12,9 +12,4 @@ public interface Connections<T> {
 
     void disconnect(int connectionId);
 
-    void disconnectAll();
-
-    int add(ConnectionHandler<T> connection);
-
-    int size();
 }

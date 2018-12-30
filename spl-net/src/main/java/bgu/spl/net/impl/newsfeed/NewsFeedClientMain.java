@@ -2,8 +2,6 @@ package bgu.spl.net.impl.newsfeed;
 
 import bgu.spl.net.impl.rci.RCIClient;
 
-import java.util.Arrays;
-
 public class NewsFeedClientMain {
 
     public static void main(String[] args) throws Exception {

@@ -2,15 +2,11 @@ package bgu.spl.net.srv;
 
 import bgu.spl.net.api.MessageEncoderDecoder;
 import bgu.spl.net.api.bidi.BidiMessagingProtocol;
-import bgu.spl.net.api.bidi.Connections;
+import bgu.spl.net.impl.ConnectionsImpl;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
-import java.nio.channels.ClosedSelectorException;
-import java.nio.channels.SelectionKey;
-import java.nio.channels.Selector;
-import java.nio.channels.ServerSocketChannel;
-import java.nio.channels.SocketChannel;
+import java.nio.channels.*;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.function.Supplier;
 
@@ -23,7 +19,7 @@ public class Reactor<T> implements Server<T> {
 
     private Thread selectorThread;
     private final ConcurrentLinkedQueue<Runnable> selectorTasks = new ConcurrentLinkedQueue<>();
-    private Connections<T> clients = new ConnectionsImpl<>();
+    private ConnectionsImpl<T> clients = new ConnectionsImpl<>();
 
     public Reactor(
             int numThreads,
@@ -48,30 +44,34 @@ public class Reactor<T> implements Server<T> {
             serverSock.configureBlocking(false);
             serverSock.register(selector, SelectionKey.OP_ACCEPT);
             System.out.println("Server started - REACTOR");
-
             while (!Thread.currentThread().isInterrupted()) {
-
+                //System.out.println("*************gh2");
                 selector.select();
+                //System.out.println("*************gh3");
                 runSelectionThreadTasks();
-
+                //System.out.println("**************" + selector.selectedKeys().size());
                 for (SelectionKey key : selector.selectedKeys()) {
 
                     if (!key.isValid()) {
                         continue;
-                    } else if (key.isAcceptable()) {
+                    }
+                    else if (key.isAcceptable()) {
                         handleAccept(serverSock, selector);
-                    } else {
+                    }
+                    else {
                         handleReadWrite(key);
                     }
                 }
-
+                //System.out.println("*************** gh1");
                 selector.selectedKeys().clear(); //clear the selected keys set so that we can know about new events
 
             }
 
-        } catch (ClosedSelectorException ex) {
+        }
+        catch (ClosedSelectorException ex) {
             //do nothing - server was requested to be closed
-        } catch (IOException ex) {
+        }
+        catch (IOException ex) {
             //this is an error
             ex.printStackTrace();
         }
@@ -85,14 +85,12 @@ public class Reactor<T> implements Server<T> {
 
         if (Thread.currentThread() == selectorThread) {
             key.interestOps(ops);
-        } else {
-            selectorTasks.add(() -> {
-                key.interestOps(ops);
-            });
+        }
+        else {
+            selectorTasks.add(() -> key.interestOps(ops));
             selector.wakeup();
         }
     }
-
 
     private void handleAccept(ServerSocketChannel serverChan, Selector selector) throws IOException {
         SocketChannel clientChan = serverChan.accept();
@@ -106,10 +104,12 @@ public class Reactor<T> implements Server<T> {
                 protocol,
                 clientChan,
                 this);
-        int id = clients.add(handler);
-        System.out.println("someone connected! - " + id + "    - " + clients.size());
-        protocol.start(id, clients);
-        clientChan.register(selector, SelectionKey.OP_READ, handler);
+
+        pool.submit(handler, () -> {
+            int id = clients.add(handler);
+            protocol.start(id, clients);
+        });
+        clientChan.register(selector, SelectionKey.OP_READ | SelectionKey.OP_WRITE, handler);
     }
 
     private void handleReadWrite(SelectionKey key) {
@@ -120,6 +120,8 @@ public class Reactor<T> implements Server<T> {
             Runnable task = handler.continueRead();
             if (task != null) {
                 pool.submit(handler, task);
+                //q.add(()->pool.submit(handler, task));
+
                 //System.out.println(task.getClass().getSimpleName());
             }
         }

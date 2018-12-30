@@ -3,6 +3,7 @@ package bgu.spl.net.srv;
 import bgu.spl.net.api.MessageEncoderDecoder;
 import bgu.spl.net.api.bidi.BidiMessagingProtocol;
 import bgu.spl.net.api.bidi.Connections;
+import bgu.spl.net.impl.ConnectionsImpl;
 
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -15,21 +16,22 @@ public abstract class BaseServer<T> implements Server<T> {
     private final Supplier<BidiMessagingProtocol<T>> protocolFactory;
     private final Supplier<MessageEncoderDecoder<T>> encdecFactory;
     private ServerSocket sock;
-    private Connections<T> clients = new ConnectionsImpl<>();
+    private ConnectionsImpl<T> clients;
 
     public BaseServer(
             int port,
             Supplier<BidiMessagingProtocol<T>> protocolFactory,
             Supplier<MessageEncoderDecoder<T>> encdecFactory) {
-
         this.port = port;
         this.protocolFactory = protocolFactory;
         this.encdecFactory = encdecFactory;
         this.sock = null;
+        this.clients = new ConnectionsImpl<>();
     }
 
     @Override
     public void serve() {
+
 
         try (ServerSocket serverSock = new ServerSocket(port)) {
             System.out.println("Server started - BLOCKING");
@@ -48,9 +50,11 @@ public abstract class BaseServer<T> implements Server<T> {
                 int id = clients.add(handler);
                 System.out.println("someone connected! - " + id + "    - " + clients.size());
                 protocol.start(id, clients);
+
                 execute(handler);
             }
-        } catch (IOException ex) {
+        }
+        catch (IOException ignored) {
         }
         System.out.println("server closed!!!");
     }

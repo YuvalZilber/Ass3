@@ -15,13 +15,15 @@ public class EchoProtocol implements BidiMessagingProtocol<String> {
     public void start(int connectionId, Connections<String> connections) {
         this.id = connectionId;
         this.connections = connections;
+        System.out.println("id: " + id + " connected succesfully");
     }
+
 
     @Override
     public void process(String msg) {
         shouldTerminate = "bye".equals(msg);
         String answer = createEcho(msg);
-        System.out.println("[" + LocalDateTime.now() + "] send: " + answer);
+        System.out.println("[" + LocalDateTime.now() + "] got: " + msg);
         connections.send(id, answer);
         if (shouldTerminate) connections.disconnect(id);
     }

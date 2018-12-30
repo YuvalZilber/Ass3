@@ -79,11 +79,14 @@ public class NonBlockingConnectionHandler<T> implements ConnectionHandler<T>, Is
         return !chan.isOpen();
     }
 
+    
     public void continueWrite() {
         while (!writeQueue.isEmpty()) {
             try {
                 ByteBuffer top = writeQueue.peek();
+                //System.out.println("start write: "+new String(top.array()));
                 chan.write(top);
+                //System.out.println("left: "+top.remaining());
                 if (top.hasRemaining()) {
                     return;
                 } else {
@@ -117,8 +120,8 @@ public class NonBlockingConnectionHandler<T> implements ConnectionHandler<T>, Is
 
     @Override
     public void send(T msg) {
-
         writeQueue.add(ByteBuffer.wrap(encdec.encode(msg)));
+        System.out.println("tried to wrote " + msg.toString());
         reactor.updateInterestedOps(chan, SelectionKey.OP_READ | SelectionKey.OP_WRITE);
     }
 

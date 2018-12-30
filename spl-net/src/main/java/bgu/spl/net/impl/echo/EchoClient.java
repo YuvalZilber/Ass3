@@ -8,10 +8,12 @@ import java.io.OutputStreamWriter;
 import java.net.Socket;
 import java.util.Arrays;
 
+import static bgu.spl.net.impl.echo.EchoUtils.sendEchoMessages;
+
 public class EchoClient {
 
+
     public static void main(String[] args) throws IOException {
-        System.out.println(Arrays.toString(args));
         if (args.length == 0) {
             args = new String[]{"localhost", "11"};
         }
@@ -22,6 +24,6 @@ public class EchoClient {
         }
 
         //BufferedReader and BufferedWriter automatically using UTF-8 encoding
-        EchoClient2.sendEchoMessages(args, "b");
+        sendEchoMessages(args, "a");
     }
 }
