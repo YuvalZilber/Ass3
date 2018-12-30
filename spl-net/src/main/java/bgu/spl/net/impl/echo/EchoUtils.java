@@ -8,7 +8,7 @@ public class EchoUtils {
         EASY, MEDIUM, HARD
     }
 
-    private static Level checkLevel = Level.MEDIUM;
+    private static Level checkLevel = Level.HARD;
     private static long num1 = 0;
     private static long num2 = 0;
 
@@ -44,7 +44,7 @@ public class EchoUtils {
                     }
                 }
                 if (checkLevel == Level.MEDIUM && flag)
-                    
+
                     System.out.println("PASSED - MEDIUM, did it for 2 users, "+(name.hashCode() - 95)+" commands each");
             }
             //System.out.println(name+"outed");

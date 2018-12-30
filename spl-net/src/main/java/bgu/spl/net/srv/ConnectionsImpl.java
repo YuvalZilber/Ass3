@@ -29,7 +29,9 @@ public class ConnectionsImpl<T> implements Connections<T> {
     @Override
     public void disconnect(int connectionId) {
         //try {
-        clients.remove(connectionId);
+        synchronized (clients) {
+            clients.remove(connectionId);
+        }
         //    try {
 //            } finally {
 //                client.close();
@@ -38,7 +40,6 @@ public class ConnectionsImpl<T> implements Connections<T> {
 //        }
     }
 
-    @Override
     public void disconnectAll() {
         System.out.println("gh5");
         for (ConnectionHandler<T> tConnectionHandler : clients.values())
@@ -55,7 +56,6 @@ public class ConnectionsImpl<T> implements Connections<T> {
         clients.clear();
     }
 
-    @Override
     public int add(ConnectionHandler<T> connection) {
         cleanClosed();
         synchronized (clients) {
@@ -81,7 +81,6 @@ public class ConnectionsImpl<T> implements Connections<T> {
         }
     }
 
-    @Override
     public int size() {
         return clients.size();
     }

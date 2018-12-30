@@ -7,7 +7,7 @@ public class EchoServerMain {
     public static void main(String[] args) {
 // you can use any server...
         System.out.println("do you want a BLOCKING server?");
-        boolean blocking = true;
+        boolean blocking = false;
         if (blocking) {
 
             System.out.println("SERVER STARTED - Thread Per Client");
