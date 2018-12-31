@@ -2,9 +2,7 @@ package bgu.spl.net.impl.echo;
 
 import java.io.IOException;
 
-
 public class EchoClient2 {
-
 
     public static void main(String[] args) throws IOException {
         if (args.length == 0) {

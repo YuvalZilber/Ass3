@@ -7,6 +7,7 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.nio.ByteBuffer;
+import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.LinkedList;
@@ -187,15 +188,11 @@ public class bgsEncoderDecoder implements MessageEncoderDecoder {
         return bytes;
     }
 
-    //@SuppressWarnings("all")
     private static Object[] message2values(Message msg) {
-        Field[] fields = msg.getClass().getFields();
+        Field[] fields = msg.getClass().getDeclaredFields();
         List<Object> values = new LinkedList<>();
         for (Field field : fields) {
             try {
-                //Method method=msg.getClass().getDeclaredMethod("get" + upperCaseFirstChar(field.getName()),
-                //                                               msg.getClass());
-                //values.add(method.invoke(msg));
                 field.setAccessible(true);
                 values.add(field.get(msg));
             }
@@ -215,12 +212,12 @@ public class bgsEncoderDecoder implements MessageEncoderDecoder {
     private static byte[] value2bytes(Object value) {
         Class type = value.getClass();
         if (type == short.class | type == Short.class | type == char.class)
-            return new byte[]{(byte) value, (byte) ((short) value >> 8)};
+            return new byte[]{(byte) ((short) value >> 8),(byte) ((short)value)};
         if (type == byte.class | type == Byte.class) return new byte[]{(byte) value};
-        if (type == String.class) return ((String) value + '\0').getBytes();
+        if (type == String.class) return ((String) value + '\0').getBytes(Charset.forName("UTF8"));
         if (type == String[].class & ((String[]) value).length == 0) return new byte[0];
         if (type == String[].class) return concat(value2bytes(((String[]) value)[0]),
-                                                  value2bytes(Arrays.copyOf(((String[]) value), 1)));
+                                                  value2bytes(Arrays.copyOfRange(((String[]) value), 1,((String[]) value).length)));
         return new byte[0];
     }
 

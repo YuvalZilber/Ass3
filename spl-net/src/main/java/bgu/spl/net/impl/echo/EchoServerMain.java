@@ -2,8 +2,6 @@ package bgu.spl.net.impl.echo;
 
 import bgu.spl.net.srv.Server;
 
-import java.util.concurrent.ConcurrentHashMap;
-
 public class EchoServerMain {
     public static void main(String[] args) {
 // you can use any server...

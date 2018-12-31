@@ -16,9 +16,9 @@ public class ConnectionsImpl<T> implements Connections<T> {
     @Override
     public boolean send(int connectionId, T msg) {
         try {
-            synchronized (clients) {
+            //synchronized (clients) {
                 clients.get(connectionId).send(msg);
-            }
+            //}
             return true;
         } catch (Exception e) {
             return false;

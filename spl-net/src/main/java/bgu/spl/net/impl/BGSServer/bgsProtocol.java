@@ -42,7 +42,6 @@ public class bgsProtocol implements BidiMessagingProtocol<Message> {
                 db.follow(id, follow.getFollow(), follow.getUserNameList());
             case 5:
                 MessagePOST post = (MessagePOST) message;
-                //post.setPostTime(System.currentTimeMillis());
                 complete(db.post(id, post), message);
             case 6:
                 MessagePM pm = (MessagePM) message;

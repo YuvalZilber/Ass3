@@ -15,13 +15,15 @@ public class EchoUtils {
 
 
     void sendEchoMessages(String[] args, String name) throws IOException {
-        int ndlksjafds = 0;
+        int i = 0;
         boolean flag = true;
+        boolean stackOnread=false;
         try {
+
             while (checkLevel == Level.HARD |
-                    (checkLevel == Level.EASY & (ndlksjafds == 0)) |
-                    (checkLevel == Level.MEDIUM & (ndlksjafds < 2))) {
-                ndlksjafds++;
+                    (checkLevel == Level.EASY & (i == 0)) |
+                    (checkLevel == Level.MEDIUM & (i < 2))) {
+                i++;
                 num2++;
                 try (Socket sock = new Socket(args[0], 7777);
                      BufferedReader in = new BufferedReader(new InputStreamReader(sock.getInputStream()));
@@ -36,30 +38,33 @@ public class EchoUtils {
                             out.flush();
                             if (false)//recommended for debugging
                                 System.out.println("client:" + name + ", sent:" + mb);
-                            String line2 = in.readLine();
+                            stackOnread=true;
+                            String line = in.readLine();
+                            stackOnread=false;
                             if (checkLevel == Level.HARD)
-                                System.out.println("message from server: " + line2);
+                                System.out.println("message from server: " + line);
                             String a = name + "-" + args[1] + " - " + (num1 - 1) + " - " + (num2) + " ..  1 ..  1 ..";
-                            if (checkLevel == Level.EASY && a.equals(line2))
-                                System.out.println("PASSED - EASY, did it for 1 echo command");
-                            else if (!a.equals(line2))
+                            if (checkLevel == Level.EASY && a.equals(line))
+                                System.out.println("PASSED - EASY, did it for 1 echo command - you can get better!");
+                            else if (!a.equals(line))
                                 flag = false;
                         }
                     }
                     if (checkLevel == Level.MEDIUM && flag)
-                        System.out.println("PASSED - MEDIUM, did it for 2 users, " + (name.hashCode() - 95) + " commands each");
+                        System.out.println("PASSED - MEDIUM, did it for 2 users, " + (name.hashCode() - 95) + " commands each - you r doing well!");
                 }
                 //System.out.println(name+"outed");
 
             }
         }
         catch (NoRouteToHostException exception){
-            System.out.println("HARD - PASS");
+            if(!stackOnread)
+                System.out.println("HARD - PASS");
         }
         if ((checkLevel == Level.MEDIUM) & flag)
             System.out.println("PASSED - MEDIUM, did it for 2 serial connections, " +
                                (name.hashCode() - 95) +
-                               " echos each");
+                               " echos each, GREAT JOB!");
 
     }
 }

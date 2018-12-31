@@ -4,7 +4,9 @@ import bgu.spl.net.impl.BGSServer.Messages.*;
 import bgu.spl.net.impl.ConnectionsImpl;
 
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.LinkedList;
+import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
@@ -53,16 +55,14 @@ public class DataBase {
 
     public boolean post(int id, MessagePOST post) {
         posts.put(id, post);
-        LinkedList<User> users2sendit2 = new LinkedList<>(users.get(id).getFollowers().asList());
+        Set<User> usersFollowing = new HashSet<>(users.get(id).getFollowers().asList());
         String[] tagged = post.getContent().split(" ");
-        tagged = Arrays.stream(tagged).filter(x -> x.charAt(0) == '@' &&
-                                                   !users2sendit2.contains(users.get(x.substring(1)))).toArray(String[]::new);
-        Arrays.stream(tagged).forEach(x -> users2sendit2.add(users.get(x)));
-
+        tagged = Arrays.stream(tagged).filter(x -> x.charAt(0) == '@').toArray(String[]::new);
+        Arrays.stream(tagged).forEach(x -> usersFollowing.add(users.get(x)));
 
         NOTIFICATION notification = generateNotification(id, post, (char) 0);
 
-        for (User user : users2sendit2) {
+        for (User user : usersFollowing) {
             int userID = user.getId();
             if (user.isLoggedIn()) {
                 connections.send(userID, notification);
@@ -79,7 +79,6 @@ public class DataBase {
 
     public boolean sendPM(int id, MessagePM pm) {
         if (users.get(pm.getUsername()) == null) return false;
-        pm.setSender(id2name(id));
         int receiver = name2id(pm.getUsername());
 
         NOTIFICATION notification = generateNotification(id, pm, (char) 0);
