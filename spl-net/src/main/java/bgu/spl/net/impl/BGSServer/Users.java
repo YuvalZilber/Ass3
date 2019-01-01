@@ -12,7 +12,9 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 class Users implements ReadWriteLock {
     private final Set<User> users = new HashSet<>();
     private final ReadWriteLock lock = new ReentrantReadWriteLock();
-
+    private int readerLocked = 0;
+    private int writerLocked = 0;
+//region LOCKS
     @Override
     public Lock readLock() {
         return lock.readLock();
@@ -23,6 +25,62 @@ class Users implements ReadWriteLock {
         return lock.writeLock();
     }
 
+    synchronized void lockReader() {
+        readerLocked++;
+        readLock().lock();
+    }
+
+    synchronized void lockWriter() {
+        if (writerLocked != 0) throw new MyLockException("**  locking: writerLocked: " + writerLocked + ", not" + 0);
+        readLock().lock();
+        writerLocked++;
+    }
+
+    synchronized void lockReaderRelease() {
+        if (readerLocked == 0) throw new MyLockException("**unlocking: readerLocked: " + 0 + ", not: positive");
+        readLock().lock();
+        readerLocked--;
+    }
+
+    synchronized void lockWriterRelease() {
+        readLock().lock();
+        writerLocked--;
+    }
+
+    synchronized void lockReaderRelease(int expected) {
+        if(expected<0){
+            lockReaderRelease();
+            return;
+        }
+        if (expected != readerLocked) throw new MyLockException(String.format(
+                "**  locking: expected: %d, Actual: %d",
+                expected, readerLocked));
+        readLock().lock();
+        readerLocked--;
+    }
+
+    synchronized void lockReader(int expected) {
+        if ((!(expected < 0 & readerLocked > 0)) & (expected != readerLocked)) throw new MyLockException(String.format(
+                "**  locking: expected: %s, Actual: %d",
+                expected < 0 ? "positive" : "" + expected, readerLocked));
+        readLock().lock();
+        readerLocked++;
+    }
+
+    synchronized void lockWriter(boolean tothrow) {
+        if (tothrow & (writerLocked == 1 | readerLocked>0)) throw new MyLockException("**  locking: writer is locked against expectation");
+        writeLock().lock();
+        writerLocked++;
+    }
+
+    synchronized boolean isReaderLocked() {
+        return readerLocked > 0;
+    }
+
+    synchronized boolean isWriterLocked() {
+        return writerLocked > 0;
+    }
+//endregion
     User get(String name) {
         if (name == null) return null;
         User output = null;
@@ -65,12 +123,12 @@ class Users implements ReadWriteLock {
     }
 
     boolean removeIfPossible(String name) {
-        writeLock().lock();
+        //lockWriter(true);
         User user = get(name);
         if (user == null)
             return false;
         boolean output = users.remove(user);
-        writeLock().unlock();
+        //lockWriterRelease();
         return output;
     }
 
@@ -79,9 +137,9 @@ class Users implements ReadWriteLock {
     }
 
     String[] getNames() {
-        lock.readLock().lock();
+        lockReader(1);
         String[] names = new LinkedList<>(users).stream().map(User::getName).toArray(String[]::new);
-        lock.readLock().unlock();
+        lockReaderRelease(2);
         return names;
     }
 

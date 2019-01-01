@@ -17,22 +17,17 @@ public class EchoProtocol implements BidiMessagingProtocol<String> {
     @Override
     public void start(int connectionId, Connections<String> connections) {
         this.id = connectionId;
-        this.connections = (ConnectionsImpl<String>)connections;
+        this.connections = (ConnectionsImpl<String>) connections;
         System.out.println("id: " + id + " connected succesfully");
     }
 
-private ReadWriteLock lock=new ReentrantReadWriteLock();
+    private ReadWriteLock lock = new ReentrantReadWriteLock();
+
     @Override
     public void process(String msg) {
         shouldTerminate = "bye".equals(msg);
-        lock.readLock().lock();
-        System.out.println("gh1");
-        lock.writeLock().lock();
-        System.out.println("gh2");
-        lock.writeLock().unlock();
-        lock.readLock().unlock();
         String answer = createEcho(msg);
-        System.out.println("[" + LocalDateTime.now() + "] got: " + msg+" size: "+connections.size());
+        System.out.println("[" + LocalDateTime.now() + "] got: " + msg + " size: " + connections.size());
         connections.send(id, answer);
         if (shouldTerminate) connections.disconnect(id);
     }

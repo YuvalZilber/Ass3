@@ -42,22 +42,19 @@ public class bgsProtocol implements BidiMessagingProtocol<Message> {
             return;
         }
         db.getUsers().readLock().unlock();//#
-        user.writeLock().lock();
         if (code == 2) {///////////////////////////////////
             MessageLOGIN login = (MessageLOGIN) message;
             db.login(login.getUsername(), login.getPassword(), id);
 
             return;
         }
-        user.writeLock().unlock();
-        user.readLock().lock();//#
         if (code > 2 && user.getId() == -1) {
             error(code);
             return;
         }
         switch (code) {
             case 3:
-                complete(db.logout(id), message);
+                db.logout(id);
                 break;
             case 4:
                 MessageFOLLOW follow = (MessageFOLLOW) message;
@@ -80,7 +77,6 @@ public class bgsProtocol implements BidiMessagingProtocol<Message> {
                 break;
 
         }
-        user.readLock().unlock();//#
     }
 
     private void complete(boolean didit, Message message) {
