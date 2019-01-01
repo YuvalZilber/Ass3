@@ -7,23 +7,29 @@ import bgu.spl.net.srv.bidi.ConnectionHandler;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.locks.ReadWriteLock;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
 import java.util.function.Supplier;
 
 public class ConnectionsImpl<T> implements Connections<T> {
-    private HashMap<Integer, ConnectionHandler<T>> clients = new HashMap<>();
-    private int id = -1;
-    private boolean isCleaning = false;
+    private final HashMap<Integer, ConnectionHandler<T>> clients = new HashMap<>();
+    private final AtomicInteger id = new AtomicInteger(0);
+    private final ReadWriteLock lock = new ReentrantReadWriteLock();
+
     @Override
     public boolean send(int connectionId, T msg) {
         try {
-            //synchronized (clients) {
-                clients.get(connectionId).send(msg);
-            //}
+            lock.readLock().lock();
+            clients.get(connectionId).send(msg);
+            lock.readLock().unlock();
             return true;
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             return false;
         }
     }
+
     @Override
     public void broadcast(T msg) {
         clients.values().forEach(client -> client.send(msg));
@@ -33,9 +39,9 @@ public class ConnectionsImpl<T> implements Connections<T> {
     @Override
     public void disconnect(int connectionId) {
         //try {
-        synchronized (clients) {
-            clients.remove(connectionId);
-        }
+        lock.writeLock().lock();
+        clients.remove(connectionId);
+        lock.writeLock().unlock();
         //    try {
 //            } finally {
 //                client.close();
@@ -45,51 +51,48 @@ public class ConnectionsImpl<T> implements Connections<T> {
     }
 
     public void disconnectAll() {
+
+        lock.writeLock().lock();
         for (ConnectionHandler<T> tConnectionHandler : clients.values())
             try {
                 tConnectionHandler.close();
-
-            } catch (IOException ignored) {
             }
-        clients.values().forEach(client -> {
-            try (ConnectionHandler con = client) {
-            } catch (IOException ignored) {
+            catch (IOException ignored) {
             }
-        });
         clients.clear();
+        lock.writeLock().unlock();
     }
 
     public int add(ConnectionHandler<T> connection) {
         cleanClosed();
-        synchronized (clients) {
-            if (!clients.containsValue(connection)) {
-                clients.put(++id, connection);
-                return id;
-            }
 
-            for (Map.Entry<Integer, ConnectionHandler<T>> entry : clients.entrySet())
-                if (entry.getValue() == connection)
-                    return entry.getKey();
-        }
-        return -1;
+        int curID = id.getAndIncrement();
+        lock.readLock().lock();
+        clients.put(curID, connection);
+        lock.readLock().unlock();
+
+        return curID;
     }
 
     private void cleanClosed() {
-        HashMap<Integer, ConnectionHandler<T>> copy = new HashMap<>();
-        synchronized (clients) {
-            copy = new HashMap<>(clients);
-        }
+        HashMap<Integer, ConnectionHandler<T>> copy;
+        lock.readLock().lock();
+        copy = new HashMap<>(clients);
+        lock.readLock().unlock();
+
         for (Map.Entry<Integer, ConnectionHandler<T>> entry : copy.entrySet()) {
             IsCloseable ic = (IsCloseable) entry.getValue();
             if (ic.isClosed()) {
                 disconnect(entry.getKey());
             }
         }
+
     }
 
     public int size() {
-        synchronized (clients) {
-            return clients.size();
-        }
+        lock.readLock().lock();
+        int s = clients.size();
+        lock.readLock().unlock();
+        return s;
     }
 }

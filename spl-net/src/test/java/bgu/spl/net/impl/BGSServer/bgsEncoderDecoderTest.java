@@ -8,9 +8,9 @@ import java.util.Map;
 import static org.junit.Assert.*;
 
 public class bgsEncoderDecoderTest {
-    static bgsEncoderDecoder decoder = new bgsEncoderDecoder();
+    private static bgsEncoderDecoder decoder = new bgsEncoderDecoder();
 
-    static Map<byte[], String> a = new LinkedHashMap<>();
+    private static Map<byte[], String> a = new LinkedHashMap<>();
     private static final Map<String, String> myMap;
 
     static {
@@ -45,15 +45,6 @@ public class bgsEncoderDecoderTest {
             }
             a.put(bytes, entry.getValue());
         }
-    }
-
-    @org.junit.Before
-    public void setUp() throws Exception {
-
-    }
-
-    @org.junit.After
-    public void tearDown() throws Exception {
     }
 
     @org.junit.Test

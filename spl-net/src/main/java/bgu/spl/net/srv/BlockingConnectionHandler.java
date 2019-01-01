@@ -13,7 +13,6 @@ public class BlockingConnectionHandler<T> implements Runnable, ConnectionHandler
     private final BidiMessagingProtocol<T> protocol;
     private final MessageEncoderDecoder<T> encdec;
     private final Socket sock;
-    private BufferedInputStream in;
     private BufferedOutputStream out;
     private volatile boolean connected = true;
 
@@ -30,7 +29,7 @@ public class BlockingConnectionHandler<T> implements Runnable, ConnectionHandler
             int read;
 
 
-            in = new BufferedInputStream(sock.getInputStream());
+            BufferedInputStream in = new BufferedInputStream(sock.getInputStream());
             out = new BufferedOutputStream(sock.getOutputStream());
 
             while (!protocol.shouldTerminate() && connected && (read = in.read()) >= 0) {

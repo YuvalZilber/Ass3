@@ -3,7 +3,7 @@ package bgu.spl.net.impl.BGSServer.Messages;
 import bgu.spl.net.impl.BGSServer.Message;
 
 public class ERROR extends Message {
-    Short messageOpcode;
+    private Short messageOpcode;
 
     public ERROR() {
         super((byte) 11);

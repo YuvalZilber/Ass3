@@ -4,7 +4,7 @@ import bgu.spl.net.srv.Server;
 
 public class ReactorMain {
     public static void main(String[] args) {
-        DataBase db = new DataBase();
+        Database db = new Database();
         if (args.length == 0)
             args = new String[]{"7777", Runtime.getRuntime().availableProcessors() + ""};
 

@@ -2,34 +2,43 @@ package bgu.spl.net.impl.echo;
 
 import bgu.spl.net.api.bidi.BidiMessagingProtocol;
 import bgu.spl.net.api.bidi.Connections;
+import bgu.spl.net.impl.ConnectionsImpl;
 
 import java.time.LocalDateTime;
+import java.util.concurrent.locks.ReadWriteLock;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 public class EchoProtocol implements BidiMessagingProtocol<String> {
 
     private boolean shouldTerminate = false;
     private int id;
-    private Connections<String> connections;
+    private ConnectionsImpl<String> connections;
 
     @Override
     public void start(int connectionId, Connections<String> connections) {
         this.id = connectionId;
-        this.connections = connections;
+        this.connections = (ConnectionsImpl<String>)connections;
         System.out.println("id: " + id + " connected succesfully");
     }
 
-
+private ReadWriteLock lock=new ReentrantReadWriteLock();
     @Override
     public void process(String msg) {
         shouldTerminate = "bye".equals(msg);
+        lock.readLock().lock();
+        System.out.println("gh1");
+        lock.writeLock().lock();
+        System.out.println("gh2");
+        lock.writeLock().unlock();
+        lock.readLock().unlock();
         String answer = createEcho(msg);
-        System.out.println("[" + LocalDateTime.now() + "] got: " + msg);
+        System.out.println("[" + LocalDateTime.now() + "] got: " + msg+" size: "+connections.size());
         connections.send(id, answer);
         if (shouldTerminate) connections.disconnect(id);
     }
 
     private String createEcho(String message) {
-        String echoPart = message.substring(Math.max(message.length() - 2, 0), message.length());
+        String echoPart = message.substring(Math.max(message.length() - 2, 0));
         return message + " .. " + echoPart + " .. " + echoPart + " ..";
     }
 

@@ -4,14 +4,15 @@ import bgu.spl.net.api.bidi.BidiMessagingProtocol;
 import bgu.spl.net.api.bidi.Connections;
 import bgu.spl.net.impl.BGSServer.Messages.*;
 
+import java.util.concurrent.ConcurrentLinkedQueue;
+
 public class bgsProtocol implements BidiMessagingProtocol<Message> {
-    private DataBase db;
+    private final Database db;
     private int id;
-    private Connections<Message> clients;
 
     private boolean shouldTerminate;
 
-    public bgsProtocol(DataBase db) {
+    public bgsProtocol(Database db) {
         this.db = db;
         this.shouldTerminate = false;
     }
@@ -19,40 +20,67 @@ public class bgsProtocol implements BidiMessagingProtocol<Message> {
     @Override
     public void start(int connectionId, Connections<Message> connections) {
         this.id = connectionId;
-        this.clients = connections;
     }
 
     @SuppressWarnings("cast")
     @Override
     public void process(Message message) {
         short code = message.opCode;
-        if (code > 2 && !db.isUserLoggedIn(id))
+
+
+        if (code == 1) {////////////////////////////////
+            db.getUsers().writeLock().lock();
+            MessageREGISTER register = (MessageREGISTER) message;
+            complete(db.register(register.getUsername(), register.getPassword()), message);
+            db.getUsers().writeLock().unlock();
+            return;
+        }
+        db.getUsers().readLock().lock();//#
+        User user = db.getUser(id);
+        if (user == null) {
             error(code);
+            return;
+        }
+        db.getUsers().readLock().unlock();//#
+        user.writeLock().lock();
+        if (code == 2) {///////////////////////////////////
+            MessageLOGIN login = (MessageLOGIN) message;
+            db.login(login.getUsername(), login.getPassword(), id);
+
+            return;
+        }
+        user.writeLock().unlock();
+        user.readLock().lock();//#
+        if (code > 2 && user.getId() == -1) {
+            error(code);
+            return;
+        }
         switch (code) {
-            case 1:
-                MessageREGISTER register = (MessageREGISTER) message;
-                complete(db.register(register.getUsername()), message);
-            case 2:
-                MessageLOGIN login = (MessageLOGIN) message;
-                complete(db.login(login.getUsername(), id), message);
             case 3:
                 complete(db.logout(id), message);
+                break;
             case 4:
                 MessageFOLLOW follow = (MessageFOLLOW) message;
                 db.follow(id, follow.getFollow(), follow.getUserNameList());
+                break;
             case 5:
                 MessagePOST post = (MessagePOST) message;
-                complete(db.post(id, post), message);
+                db.post(id, post);
+                break;
             case 6:
                 MessagePM pm = (MessagePM) message;
                 complete(db.sendPM(id, pm), message);
+                break;
             case 7:
                 db.userList(id);
+                break;
             case 8:
                 MessageSTAT stat = (MessageSTAT) message;
                 db.stats(id, stat.getUsername());
+                break;
 
         }
+        user.readLock().unlock();//#
     }
 
     private void complete(boolean didit, Message message) {

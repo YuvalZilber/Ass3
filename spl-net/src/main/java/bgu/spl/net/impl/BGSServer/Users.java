@@ -1,73 +1,91 @@
 package bgu.spl.net.impl.BGSServer;
 
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReadWriteLock;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
 
-class Users {
-    private ConcurrentLinkedQueue<User> users = new ConcurrentLinkedQueue<>();
+class Users implements ReadWriteLock {
+    private final Set<User> users = new HashSet<>();
+    private final ReadWriteLock lock = new ReentrantReadWriteLock();
+
+    @Override
+    public Lock readLock() {
+        return lock.readLock();
+    }
+
+    @Override
+    public Lock writeLock() {
+        return lock.writeLock();
+    }
 
     User get(String name) {
         if (name == null) return null;
-
+        User output = null;
+        lock.readLock().lock();
         for (User user : users) {
             if (user.getName().equals(name))
-                return user;
+                output = user;
         }
-        return null;
+        lock.readLock().unlock();
+        return output;
     }
 
-    User get(int id) {
+    synchronized User get(int id) {
+        User output = null;
+        lock.readLock().lock();
         for (User user : users) {
             if (user.getId() == id)
-                return user;
+                output = user;
         }
-        return null;
+        lock.readLock().unlock();
+        return output;
     }
 
-    synchronized boolean addIfAbsent(String name) {
+    boolean addIfAbsent(String name) {
+        return addIfAbsent(name, "");
+    }
+
+    boolean addIfAbsent(String name, String password) {
+        if (get(name) != null) return false;
+
+        writeLock().lock();//#
         if (get(name) != null) return false;
         User user = new User(name);
-        users.add(user);
-        return true;
-    }
+        if (!password.equals(""))
+            user.setPassword(password);
+        boolean output = users.add(user);
+        writeLock().unlock();//#
 
-    synchronized boolean login(String name, int id) {
-        User user = get(name);
-        if (user == null) return false;
-        if (user.isLoggedIn()) return false;
-        if (user.getId() != -1) return false;
-        user.login(id);
-        return true;
+        return output;
     }
-
-    synchronized boolean logout(int id) {
-        User user = get(id);
-        if (user == null) return false;
-        if (!user.isLoggedIn()) return false;
-        if (user.getId() == -1) return false;
-        user.logout();
-        return true;
-    }
-
 
     boolean removeIfPossible(String name) {
+        writeLock().lock();
         User user = get(name);
-        if (user == null) {
+        if (user == null)
             return false;
-        }
-        return users.remove(user);
+        boolean output = users.remove(user);
+        writeLock().unlock();
+        return output;
     }
 
-    public int size() {
+    int size() {
         return users.size();
     }
 
-    public String[] getNames() {
-        return new LinkedList<>(users).stream().map(User::getName).toArray(String[]::new);
+    String[] getNames() {
+        lock.readLock().lock();
+        String[] names = new LinkedList<>(users).stream().map(User::getName).toArray(String[]::new);
+        lock.readLock().unlock();
+        return names;
     }
 
-    public List<User> asList() {
+    List<User> asList() {
         return new LinkedList<>(users);
     }
 }

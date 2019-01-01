@@ -2,7 +2,7 @@ package bgu.spl.net.impl.echo;
 
 import bgu.spl.net.srv.Server;
 
-public class EchoServerMain {
+class EchoServerMain {
     public static void main(String[] args) {
 // you can use any server...
 

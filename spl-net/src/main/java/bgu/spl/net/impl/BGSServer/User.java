@@ -3,82 +3,94 @@ package bgu.spl.net.impl.BGSServer;
 import bgu.spl.net.impl.BGSServer.Messages.MessagePOST;
 import bgu.spl.net.impl.BGSServer.Messages.NOTIFICATION;
 
-import java.time.LocalDateTime;
 import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReadWriteLock;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
 
-public class User {
+class User implements ReadWriteLock {
     private int id = -1;
-    private boolean loggedIn = false;
-    private String name;
-    private Users following = new Users();
-    private Users followers = new Users();
+    private String password = "";
+    private final String name;
+    private final Users following = new Users();
+    private final Users followers = new Users();
+    private final ReadWriteLock lock = new ReentrantReadWriteLock();
+    private final ConcurrentLinkedQueue<MessagePOST> posts = new ConcurrentLinkedQueue<>();
+    private final ConcurrentLinkedQueue<NOTIFICATION> missed = new ConcurrentLinkedQueue<>();
 
-    ConcurrentLinkedQueue<MessagePOST> posts;
-    ConcurrentLinkedQueue<NOTIFICATION> missed;
-    
-    public Users getFollowing() {
+    @Override
+    public Lock readLock() {
+        return lock.readLock();
+    }
+
+    @Override
+    public Lock writeLock() {
+        return lock.writeLock();
+    }
+
+    String getPassword() {
+        return password;
+    }
+
+    void setPassword(String password) {
+        this.password = password;
+    }
+
+    ConcurrentLinkedQueue<MessagePOST> getPosts() {
+        return posts;
+    }
+
+    ConcurrentLinkedQueue<NOTIFICATION> getMissed() {
+        return missed;
+    }
+
+    Users getFollowing() {
         return following;
     }
 
-    public Users getFollowers() {
+    Users getFollowers() {
         return followers;
     }
 
-    public void setFollowing(Users following) {
-        this.following = following;
-    }
-
-    public void setFollowers(Users followers) {
-        this.followers = followers;
-    }
-
-    public void miss(NOTIFICATION post) {
+    synchronized void miss(NOTIFICATION post) {
         missed.add(post);
     }
 
-    public User(String name) {
+    User(String name) {
         this.name = name;
     }
 
-    public void post(MessagePOST post) {
-        posts.add(post);
-    }
-
-    public int getId() {
+    int getId() {
         return id;
     }
 
-    public boolean isLoggedIn() {
-        return loggedIn;
-    }
+    boolean isLoggedIn() { return id != -1; }
 
-    public String getName() {
+    String getName() {
         return name;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    void login(int id) {
+        writeLock().lock();
+        if (id == -1)
+            this.id = id;
+        writeLock().lock();
     }
 
-    public void login(int id) {
-        this.loggedIn = true;
-        this.id = id;
-    }
-
-    public void logout() {
-        this.loggedIn = false;
+    void logout() {
+        writeLock().lock();
         this.id = -1;
+        writeLock().lock();
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public boolean follow(byte todo, User user2follow) {
+    boolean follow(byte todo, User user2follow) {
         boolean didit1;
+
         boolean didit2 = user2follow.addMeAsFollowerTo(todo, user2follow);
-        if (todo == 0) didit1 = following.addIfAbsent(user2follow.name);
-        else didit1 = following.removeIfPossible(user2follow.name);
+        writeLock().lock();
+        didit1 = todo == 0 ? following.addIfAbsent(user2follow.getName()) :
+                 following.removeIfPossible(user2follow.name);
+        writeLock().unlock();
         //todo: delete this from here
         if (didit1 != didit2)
             throw new IllegalStateException("**********846****************");
@@ -87,8 +99,11 @@ public class User {
     }
 
     private boolean addMeAsFollowerTo(byte todo, User user) {
-        if (todo == 0)
-            return user.followers.addIfAbsent(this.getName());
-        return user.followers.removeIfPossible(this.name);
+        boolean flag;
+        user.writeLock().lock();
+        flag = todo == 0 ? user.followers.addIfAbsent(this.getName()) :
+               user.followers.removeIfPossible(this.name);
+        user.writeLock().unlock();
+        return flag;
     }
 }

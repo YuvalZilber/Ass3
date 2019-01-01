@@ -39,7 +39,8 @@ public class NonBlockingConnectionHandler<T> implements ConnectionHandler<T>, Is
         boolean success = false;
         try {
             success = chan.read(buf) != -1;
-        } catch (IOException ex) {
+        }
+        catch (IOException ex) {
             ex.printStackTrace();
         }
 
@@ -59,7 +60,8 @@ public class NonBlockingConnectionHandler<T> implements ConnectionHandler<T>, Is
                     releaseBuffer(buf);
                 }
             };
-        } else {
+        }
+        else {
             releaseBuffer(buf);
             close();
             return null;
@@ -70,7 +72,8 @@ public class NonBlockingConnectionHandler<T> implements ConnectionHandler<T>, Is
     public void close() {
         try {
             chan.close();
-        } catch (IOException ex) {
+        }
+        catch (IOException ex) {
             ex.printStackTrace();
         }
     }
@@ -79,7 +82,7 @@ public class NonBlockingConnectionHandler<T> implements ConnectionHandler<T>, Is
         return !chan.isOpen();
     }
 
-    
+
     public void continueWrite() {
         while (!writeQueue.isEmpty()) {
             try {
@@ -89,19 +92,19 @@ public class NonBlockingConnectionHandler<T> implements ConnectionHandler<T>, Is
                 //System.out.println("left: "+top.remaining());
                 if (top.hasRemaining()) {
                     return;
-                } else {
+                }
+                else {
                     writeQueue.remove();
                 }
-            } catch (IOException ex) {
+            }
+            catch (IOException ex) {
                 ex.printStackTrace();
                 close();
             }
         }
 
-        if (writeQueue.isEmpty()) {
-            if (protocol.shouldTerminate()) close();
-            else reactor.updateInterestedOps(chan, SelectionKey.OP_READ);
-        }
+        if (protocol.shouldTerminate()) close();
+        else reactor.updateInterestedOps(chan, SelectionKey.OP_READ);
     }
 
     private static ByteBuffer leaseBuffer() {

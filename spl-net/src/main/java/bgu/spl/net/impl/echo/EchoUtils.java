@@ -9,7 +9,7 @@ public class EchoUtils {
         EASY, MEDIUM, HARD
     }
 
-    private static Level checkLevel = Level.HARD;
+    private static final Level checkLevel = Level.HARD;
     private static long num1 = 0;
     private static long num2 = 0;
 

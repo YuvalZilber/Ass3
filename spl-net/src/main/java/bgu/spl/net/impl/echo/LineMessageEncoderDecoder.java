@@ -17,8 +17,7 @@ public class LineMessageEncoderDecoder implements MessageEncoderDecoder<String> 
 
         if (nextByte == '\n') {
 
-            String str = popString();
-            return str;
+            return popString();
         }
 
         pushByte(nextByte);

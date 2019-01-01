@@ -6,8 +6,8 @@ import java.util.Arrays;
 import java.util.List;
 
 public class ACK extends Message {
-    Short messageOpcode;
-    List<Object> optional;
+    private Short messageOpcode;
+    private List<Object> optional;
 
     public ACK() {
         super((byte) 10);
@@ -20,10 +20,6 @@ public class ACK extends Message {
 
     public void setMessageOpcode(Short messageOpcode) {
         this.messageOpcode = messageOpcode;
-    }
-
-    public void setOptional(Object[] optional) {
-        this.optional = Arrays.asList(optional);
     }
 
     public void addOptions(Object... option) {

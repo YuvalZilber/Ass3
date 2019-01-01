@@ -15,13 +15,13 @@ import java.util.List;
 
 public class bgsEncoderDecoder implements MessageEncoderDecoder {
     //region Decoder
-    private LinkedList<Byte> bytes = new LinkedList<>();//bytse red
+    private final LinkedList<Byte> bytes = new LinkedList<>();//bytse red
     private Class<? extends Message> curType = null;//current message type
     private int remains0 = 0;//the '\0' remains before EOM(End Of Message)
     private int remainsForParam = 0;//remain bytes before end of parameter
     private int paramIndex = -1;//the current parameter index
     private Field[] params = null;//array of Message fields
-    private LinkedList<Integer> splitters = new LinkedList<>();//indexes in bytes where a new field begins
+    private final LinkedList<Integer> splitters = new LinkedList<>();//indexes in bytes where a new field begins
 
 
     @SuppressWarnings("all")
