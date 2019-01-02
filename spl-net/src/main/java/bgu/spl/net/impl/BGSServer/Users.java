@@ -4,7 +4,6 @@ import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
-import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
@@ -14,7 +13,8 @@ class Users implements ReadWriteLock {
     private final ReadWriteLock lock = new ReentrantReadWriteLock();
     private int readerLocked = 0;
     private int writerLocked = 0;
-//region LOCKS
+
+    //region LOCKS
     @Override
     public Lock readLock() {
         return lock.readLock();
@@ -26,8 +26,8 @@ class Users implements ReadWriteLock {
     }
 
     synchronized void lockReader() {
-        readerLocked++;
         readLock().lock();
+        readerLocked++;
     }
 
     synchronized void lockWriter() {
@@ -48,10 +48,6 @@ class Users implements ReadWriteLock {
     }
 
     synchronized void lockReaderRelease(int expected) {
-        if(expected<0){
-            lockReaderRelease();
-            return;
-        }
         if (expected != readerLocked) throw new MyLockException(String.format(
                 "**  locking: expected: %d, Actual: %d",
                 expected, readerLocked));
@@ -60,7 +56,7 @@ class Users implements ReadWriteLock {
     }
 
     synchronized void lockReader(int expected) {
-        if ((!(expected < 0 & readerLocked > 0)) & (expected != readerLocked)) throw new MyLockException(String.format(
+        if (expected != readerLocked) throw new MyLockException(String.format(
                 "**  locking: expected: %s, Actual: %d",
                 expected < 0 ? "positive" : "" + expected, readerLocked));
         readLock().lock();
@@ -68,7 +64,8 @@ class Users implements ReadWriteLock {
     }
 
     synchronized void lockWriter(boolean tothrow) {
-        if (tothrow & (writerLocked == 1 | readerLocked>0)) throw new MyLockException("**  locking: writer is locked against expectation");
+        if (tothrow & (writerLocked == 1 | readerLocked > 0))
+            throw new MyLockException("**  locking: writer is locked against expectation");
         writeLock().lock();
         writerLocked++;
     }
@@ -80,7 +77,8 @@ class Users implements ReadWriteLock {
     synchronized boolean isWriterLocked() {
         return writerLocked > 0;
     }
-//endregion
+
+    //endregion
     User get(String name) {
         if (name == null) return null;
         User output = null;
@@ -95,12 +93,12 @@ class Users implements ReadWriteLock {
 
     synchronized User get(int id) {
         User output = null;
-        lock.readLock().lock();
+        lock.readLock().lock();//#
         for (User user : users) {
             if (user.getId() == id)
                 output = user;
         }
-        lock.readLock().unlock();
+        lock.readLock().unlock();//#
         return output;
     }
 

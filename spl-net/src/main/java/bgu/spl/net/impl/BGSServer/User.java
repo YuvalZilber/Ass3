@@ -14,12 +14,13 @@ class User implements ReadWriteLock {
     private final String name;
     private final Users following = new Users();
     private final Users followers = new Users();
-    private final ReadWriteLock lock = new ReentrantReadWriteLock();
     private final ConcurrentLinkedQueue<MessagePOST> posts = new ConcurrentLinkedQueue<>();
     private final ConcurrentLinkedQueue<NOTIFICATION> missed = new ConcurrentLinkedQueue<>();
+    private final ReadWriteLock lock = new ReentrantReadWriteLock();
     private int readerLocked = 0;
     private int writerLocked = 0;
-//region LOCKS
+
+    //region LOCKS
     @Override
     public Lock readLock() {
         return lock.readLock();
@@ -31,8 +32,8 @@ class User implements ReadWriteLock {
     }
 
     synchronized void lockReader() {
-        readerLocked++;
         readLock().lock();
+        readerLocked++;
     }
 
     synchronized void lockWriter() {
@@ -53,10 +54,6 @@ class User implements ReadWriteLock {
     }
 
     synchronized void lockReaderRelease(int expected) {
-        if(expected<0){
-            lockReaderRelease();
-            return;
-        }
         if (expected != readerLocked) throw new MyLockException(String.format(
                 "**  locking: expected: %d, Actual: %d",
                 expected, readerLocked));
@@ -65,7 +62,7 @@ class User implements ReadWriteLock {
     }
 
     synchronized void lockReader(int expected) {
-        if ((!(expected < 0 & readerLocked > 0)) & (expected != readerLocked)) throw new MyLockException(String.format(
+        if (expected != readerLocked) throw new MyLockException(String.format(
                 "**  locking: expected: %s, Actual: %d",
                 expected < 0 ? "positive" : "" + expected, readerLocked));
         readLock().lock();
@@ -73,7 +70,8 @@ class User implements ReadWriteLock {
     }
 
     synchronized void lockWriter(boolean tothrow) {
-        if (tothrow & (writerLocked == 1 | readerLocked>0)) throw new MyLockException("**  locking: writer is locked against expectation");
+        if (tothrow & (writerLocked == 1 | readerLocked > 0))
+            throw new MyLockException("**  locking: writer is locked against expectation");
         writeLock().lock();
         writerLocked++;
     }
@@ -86,6 +84,8 @@ class User implements ReadWriteLock {
         return writerLocked > 0;
     }
 //endregion
+
+
     String getPassword() {
         return password;
     }
@@ -129,7 +129,7 @@ class User implements ReadWriteLock {
     }
 
     void login(int id) {
-        if (id != -1) throw new IllegalStateException("Err 54615");//todo:delete
+        if (this.id != -1) throw new MyLockException("Err 54615");//todo:delete
         this.id = id;
     }
 
@@ -142,12 +142,15 @@ class User implements ReadWriteLock {
 
         user2follow.lockReader(0);
         boolean didit2 = user2follow.addMeAsFollowerTo(todo, user2follow);
+        if (user2follow == this)
+            user2follow.lockReaderRelease(1);
 
         lockWriter(true);
         didit1 = todo == 0 ? following.addIfAbsent(user2follow.getName()) :
                  following.removeIfPossible(user2follow.name);
         lockWriterRelease();
-        user2follow.lockReaderRelease(1);
+        if (user2follow != this)
+            user2follow.lockReaderRelease(1);
         //todo: delete this from here
         if (didit1 != didit2)
             throw new IllegalStateException("**********846****************");

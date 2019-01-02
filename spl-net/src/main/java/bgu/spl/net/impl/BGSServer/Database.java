@@ -9,13 +9,16 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 
 class Database {
 
-
-    private final ConnectionsImpl<Message> connections = new ConnectionsImpl<>();
+    private ConnectionsImpl<Message> connections = null;
     private final Users users = new Users();
     private ConcurrentHashMap<Integer, MessagePOST> posts;
 
     Database() {
+    }
 
+    void initialConnections(ConnectionsImpl<Message> connections) {
+        if (this.connections == null)
+            this.connections = connections;
     }
 
     boolean register(String name, String password) {
@@ -24,7 +27,7 @@ class Database {
 
     private void success(int msgOpcode, int id) {//send default ack
         ACK ack = new ACK();
-        ack.setMessageOpcode((short)msgOpcode);
+        ack.setMessageOpcode((short) msgOpcode);
         this.send(id, ack);
     }
 
@@ -36,21 +39,17 @@ class Database {
 
     void login(String name, String password, int id) {
         User user;
-        users.lockReaderRelease();//#
+        users.lockReader(0);//#
         user = getUser(name);
-        if (user == null || !user.getPassword().equals(password)) {
-            error( 2, id);
+        if (user == null ||getUser(id)!=null|| !user.getPassword().equals(password)||user.getId() != -1) {
+            error(2, id);
+            users.lockReaderRelease(1);
             return;
         }
-        users.lockReaderRelease();//#
+        users.lockReaderRelease(1);//#
 
-        success( 2, id);
 
         user.lockWriter(true);//#
-        if (user.getId() != -1) {
-            error( 2, id);
-            return;
-        }
         user.login(id);
         success((short) 2, id);
         ConcurrentLinkedQueue<NOTIFICATION> missed = user.getMissed();
@@ -63,48 +62,33 @@ class Database {
         if (user == null) return;
         user.logout();
         user.lockWriterRelease();
-        if (!users.removeIfPossible(user.getName()))
-            throw new IllegalStateException("couldn't throw");
-        success(2,id);
+        success(3, id);
     }
 
     private <T> User getUserAndError(int msgOpcode,
-                                     T identi,
+                                     int id,
                                      boolean isLoggedIn,
                                      boolean unlockInTheEnd,
                                      boolean writerLock) {
-        users.lockReader(0);
         User user;
-        int id = -1;
-        if (identi instanceof String) {
-            user = users.get((String) identi);
-            users.lockReaderRelease(1);
-            if (user != null & !unlockInTheEnd) {
-                if (writerLock) user.lockWriter(true);
-                else user.lockReader();
-            }
-            return user;
-        }
-        else {
-            id = (Integer) identi;
-        }
+        users.lockReader(0);//#
         user = users.get(id);
-        boolean toError = user == null;
-        users.lockReaderRelease(1);
-        if (!toError) {
-            if (writerLock) user.lockWriter(true);
-            else user.lockReader(0);
-            toError = user.isLoggedIn() == isLoggedIn;
+        users.lockReaderRelease(1);//#
+        boolean toError = user == null & isLoggedIn;
+        if (user != null & !toError) {
+            if (writerLock) user.lockWriter(true);//#
+            else user.lockReader(0);//#
+            toError = user.isLoggedIn() != isLoggedIn;
             if (unlockInTheEnd) {
-                if (writerLock) user.lockWriterRelease();
-                else user.lockReaderRelease(1);
+                if (writerLock) user.lockWriterRelease();//#
+                else user.lockReaderRelease(1);//#
             }
         }
         if (toError) {
             error(msgOpcode, id);
-            if (user != null) {
-                if (writerLock) user.lockWriterRelease();
-                else user.lockReaderRelease(1);
+            if (user != null & !unlockInTheEnd) {
+                if (writerLock) user.lockWriterRelease();//#
+                else user.lockReaderRelease(1);//#
             }
             user = null;
         }
@@ -112,7 +96,7 @@ class Database {
     }
 
     void follow(int id, byte todo, String[] names) {
-        User user= getUserAndError(4, id, true, true, false);
+        User user = getUserAndError(4, id, true, true, false);
         if (user == null) return;
         boolean didit = false;
         for (String name : names) {
@@ -158,7 +142,7 @@ class Database {
     }
 
     boolean sendPM(int id, MessagePM pm) {
-        User user = getUserAndError(6,id,true,true,false);
+        User user = getUserAndError(6, id, true, true, false);
         if (user == null) return false;
         User reciever = users.get(pm.getUsername());
         if (reciever == null) return false;
@@ -198,7 +182,7 @@ class Database {
         reqUser.lockReader(0);
         ack.addOptions(reqUser.getPosts().size(), reqUser.getFollowers().size(), reqUser.getFollowing().size());
         send(id, ack);
-        reqUser.lockReaderRelease(1);
+        reqUser.lockReaderRelease(1);//#
     }
 
     User getUser(int name) {
@@ -207,9 +191,5 @@ class Database {
 
     private User getUser(String name) {
         return users.get(name);
-    }
-
-    Users getUsers() {
-        return users;
     }
 }

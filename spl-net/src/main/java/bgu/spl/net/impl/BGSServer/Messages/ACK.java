@@ -3,11 +3,12 @@ package bgu.spl.net.impl.BGSServer.Messages;
 import bgu.spl.net.impl.BGSServer.Message;
 
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 
 public class ACK extends Message {
     private Short messageOpcode;
-    private List<Object> optional;
+    private List<Object> optional=new LinkedList<>();
 
     public ACK() {
         super((byte) 10);

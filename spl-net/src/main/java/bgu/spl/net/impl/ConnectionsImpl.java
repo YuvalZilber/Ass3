@@ -21,8 +21,9 @@ public class ConnectionsImpl<T> implements Connections<T> {
     public boolean send(int connectionId, T msg) {
         try {
             lock.readLock().lock();
-            clients.get(connectionId).send(msg);
+            ConnectionHandler<T> handler = clients.get(connectionId);
             lock.readLock().unlock();
+            handler.send(msg);
             return true;
         }
         catch (Exception e) {
@@ -32,15 +33,17 @@ public class ConnectionsImpl<T> implements Connections<T> {
 
     @Override
     public void broadcast(T msg) {
+        lock.readLock().lock();
         clients.values().forEach(client -> client.send(msg));
+        lock.readLock().unlock();
     }
-
 
     @Override
     public void disconnect(int connectionId) {
         //try {
         lock.writeLock().lock();
-        clients.remove(connectionId);
+        ConnectionHandler<T> handler=clients.remove(connectionId);
+
         lock.writeLock().unlock();
         //    try {
 //            } finally {
@@ -51,7 +54,6 @@ public class ConnectionsImpl<T> implements Connections<T> {
     }
 
     public void disconnectAll() {
-
         lock.writeLock().lock();
         for (ConnectionHandler<T> tConnectionHandler : clients.values())
             try {
@@ -65,11 +67,10 @@ public class ConnectionsImpl<T> implements Connections<T> {
 
     public int add(ConnectionHandler<T> connection) {
         cleanClosed();
-
         int curID = id.getAndIncrement();
-        lock.readLock().lock();
+        lock.writeLock().lock();
         clients.put(curID, connection);
-        lock.readLock().unlock();
+        lock.writeLock().unlock();
 
         return curID;
     }

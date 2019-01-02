@@ -3,6 +3,7 @@ package bgu.spl.net.impl.BGSServer;
 import bgu.spl.net.api.bidi.BidiMessagingProtocol;
 import bgu.spl.net.api.bidi.Connections;
 import bgu.spl.net.impl.BGSServer.Messages.*;
+import bgu.spl.net.impl.ConnectionsImpl;
 
 import java.util.concurrent.ConcurrentLinkedQueue;
 
@@ -20,6 +21,7 @@ public class bgsProtocol implements BidiMessagingProtocol<Message> {
     @Override
     public void start(int connectionId, Connections<Message> connections) {
         this.id = connectionId;
+        db.initialConnections((ConnectionsImpl<Message>) connections);
     }
 
     @SuppressWarnings("cast")
@@ -29,26 +31,18 @@ public class bgsProtocol implements BidiMessagingProtocol<Message> {
 
 
         if (code == 1) {////////////////////////////////
-            db.getUsers().writeLock().lock();
             MessageREGISTER register = (MessageREGISTER) message;
             complete(db.register(register.getUsername(), register.getPassword()), message);
-            db.getUsers().writeLock().unlock();
             return;
         }
-        db.getUsers().readLock().lock();//#
-        User user = db.getUser(id);
-        if (user == null) {
-            error(code);
-            return;
-        }
-        db.getUsers().readLock().unlock();//#
         if (code == 2) {///////////////////////////////////
             MessageLOGIN login = (MessageLOGIN) message;
             db.login(login.getUsername(), login.getPassword(), id);
 
             return;
         }
-        if (code > 2 && user.getId() == -1) {
+        User user = db.getUser(id);
+        if (user == null || (code > 2 && user.getId() == -1)) {
             error(code);
             return;
         }

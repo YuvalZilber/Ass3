@@ -28,7 +28,6 @@ public class bgsEncoderDecoder implements MessageEncoderDecoder {
     @Override
     public Message decodeNextByte(byte nextByte) {
         bytes.add(nextByte);
-
         if (params == null) {//before discover message type
             if (bytes.size() == 2) {/**if got the seccond {@code: opcode} byte*/
                 Short code = ByteBuffer.wrap(new byte[]{bytes.get(0), bytes.get(1)}).getShort();
@@ -111,17 +110,11 @@ public class bgsEncoderDecoder implements MessageEncoderDecoder {
 
     //START DECODING METHODS
 
-    private static Class[] getTypesOfFields(Field[] fields) {
-        LinkedList<Class> output = new LinkedList<>();
-        for (Field field : fields) output.add(field.getType());
-        return output.toArray(new Class[0]);
-    }
-
     @SuppressWarnings("unchecked")
     private static <T> T messageGenerator(byte[] bytes, Class<T> type, Integer[] splitters) {
         try {
             Field[] fields = type.getDeclaredFields();
-            Object[] fieldsValues = bytes2values(bytes, splitters, getTypesOfFields(fields));
+            Object[] fieldsValues = bytes2values(bytes, splitters, fields);
 
             Constructor<T> constructor = (Constructor<T>) type.getConstructors()[0];
             T output = constructor.newInstance();
@@ -141,8 +134,8 @@ public class bgsEncoderDecoder implements MessageEncoderDecoder {
         }
     }
 
-    private static Object[] bytes2values(byte[] bytes, Integer[] splitIndexes, Class<?>[] types) {
-        Object[] values = new Object[types.length];
+    private static Object[] bytes2values(byte[] bytes, Integer[] splitIndexes, Field[] fields) {
+        Object[] values = new Object[fields.length];
         LinkedList<Integer> tmp = new LinkedList<>(Arrays.asList(splitIndexes));
         tmp.add(bytes.length);
         splitIndexes = tmp.toArray(new Integer[0]);
@@ -150,7 +143,7 @@ public class bgsEncoderDecoder implements MessageEncoderDecoder {
         for (int i = 0; i < splitIndexes.length - 1; i++) {
             int from = splitIndexes[i], to = splitIndexes[i + 1];
             byte[] valueAsBytes = Arrays.copyOfRange(bytes, from, to);
-            values[i] = bytes2value(valueAsBytes, types[i]);
+            values[i] = bytes2value(valueAsBytes, fields[i].getType());
         }
         return values;
     }
@@ -170,10 +163,9 @@ public class bgsEncoderDecoder implements MessageEncoderDecoder {
 
     @Override
     public byte[] encode(Object obj) {
-        if (!(obj instanceof Message))
-            return null;
+        if (!(obj instanceof Message)) return null;
         Message msg = (Message) obj;
-
+        System.out.println("encoding: "+msg.toString());
         byte[] bytes = value2bytes(msg.opCode);
         if (!(msg instanceof ACK)) {
             Object[] values = message2values(msg);
@@ -184,7 +176,6 @@ public class bgsEncoderDecoder implements MessageEncoderDecoder {
             bytes = concat(bytes, value2bytes(ack.getMessageOpcode()));
             bytes = concat(bytes, values2bytes(ack.getOptional()));
         }
-
         return bytes;
     }
 

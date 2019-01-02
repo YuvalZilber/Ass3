@@ -28,6 +28,8 @@ public class MessageREGISTER extends Message {
 
     @Override
     public String toString() {
+        System.out.println("un:"+username);
+        System.out.println("pw:"+password);
         return "REGISTER " + username + " " + password;
     }
 }
