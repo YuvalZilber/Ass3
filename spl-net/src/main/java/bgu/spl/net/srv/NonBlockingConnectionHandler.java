@@ -102,9 +102,10 @@ public class NonBlockingConnectionHandler<T> implements ConnectionHandler<T>, Is
                 close();
             }
         }
-
-        if (protocol.shouldTerminate()) close();
-        else reactor.updateInterestedOps(chan, SelectionKey.OP_READ);
+        if (writeQueue.isEmpty()) {
+            if (protocol.shouldTerminate()) close();
+            else reactor.updateInterestedOps(chan, SelectionKey.OP_READ);
+        }
     }
 
     private static ByteBuffer leaseBuffer() {
@@ -123,8 +124,11 @@ public class NonBlockingConnectionHandler<T> implements ConnectionHandler<T>, Is
 
     @Override
     public void send(T msg) {
-        writeQueue.add(ByteBuffer.wrap(encdec.encode(msg)));
-        reactor.updateInterestedOps(chan, SelectionKey.OP_READ | SelectionKey.OP_WRITE);
+        byte[] bytes=encdec.encode(msg);
+        synchronized (this) {
+            writeQueue.add(ByteBuffer.wrap(bytes));
+            reactor.updateInterestedOps(chan, SelectionKey.OP_READ | SelectionKey.OP_WRITE);
+        }
     }
 
     public BidiMessagingProtocol<T> getProtocol() {

@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="Boost_Echo_Client"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/yuval/Downloads/Ass3/Boost_Echo_Client/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/yuval/Downloads/Ass3/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/yuval/Downloads/Ass3/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/yuval/Downloads/Ass3/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/yuval/Downloads/Ass3/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/yuval/Downloads/Ass3/Boost_Echo_Client/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/yuval/Downloads/Ass3/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/yuval/Downloads/Ass3/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/yuval/Downloads/Ass3/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/yuval/Downloads/Ass3/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Boost_Echo_Client">
+				<Option output="/home/yuval/Downloads/Ass3/Boost_Echo_Client/cmake-build-debug/Boost_Echo_Client" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/yuval/Downloads/Ass3/Boost_Echo_Client/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/yuval/Downloads/Ass3/Boost_Echo_Client/bin"/>
+					<Add directory="/home/yuval/Downloads/Ass3/Boost_Echo_Client/include"/>
+					<Add directory="/home/yuval/Downloads/Ass3/Boost_Echo_Client/src"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/yuval/Downloads/Ass3/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 Boost_Echo_Client"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/yuval/Downloads/Ass3/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/yuval/Downloads/Ass3/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/yuval/Downloads/Ass3/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Boost_Echo_Client/fast">
+				<Option output="/home/yuval/Downloads/Ass3/Boost_Echo_Client/cmake-build-debug/Boost_Echo_Client" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/yuval/Downloads/Ass3/Boost_Echo_Client/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/yuval/Downloads/Ass3/Boost_Echo_Client/bin"/>
+					<Add directory="/home/yuval/Downloads/Ass3/Boost_Echo_Client/include"/>
+					<Add directory="/home/yuval/Downloads/Ass3/Boost_Echo_Client/src"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/yuval/Downloads/Ass3/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 Boost_Echo_Client/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/yuval/Downloads/Ass3/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/yuval/Downloads/Ass3/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/yuval/Downloads/Ass3/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/yuval/Downloads/Ass3/Boost_Echo_Client/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/yuval/Downloads/Ass3/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/yuval/Downloads/Ass3/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/yuval/Downloads/Ass3/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/yuval/Downloads/Ass3/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/yuval/Downloads/Ass3/Boost_Echo_Client/include/AckFollowPacket.h">
+			<Option target="Boost_Echo_Client"/>
+		</Unit>
+		<Unit filename="/home/yuval/Downloads/Ass3/Boost_Echo_Client/include/AckPacket.h">
+			<Option target="Boost_Echo_Client"/>
+		</Unit>
+		<Unit filename="/home/yuval/Downloads/Ass3/Boost_Echo_Client/include/AckUserListPacket.h">
+			<Option target="Boost_Echo_Client"/>
+		</Unit>
+		<Unit filename="/home/yuval/Downloads/Ass3/Boost_Echo_Client/include/Client.h">
+			<Option target="Boost_Echo_Client"/>
+		</Unit>
+		<Unit filename="/home/yuval/Downloads/Ass3/Boost_Echo_Client/include/ConnectionHandler.h">
+			<Option target="Boost_Echo_Client"/>
+		</Unit>
+		<Unit filename="/home/yuval/Downloads/Ass3/Boost_Echo_Client/include/EncoderDecoder.h">
+			<Option target="Boost_Echo_Client"/>
+		</Unit>
+		<Unit filename="/home/yuval/Downloads/Ass3/Boost_Echo_Client/include/ErrorPacket.h">
+			<Option target="Boost_Echo_Client"/>
+		</Unit>
+		<Unit filename="/home/yuval/Downloads/Ass3/Boost_Echo_Client/include/KeyboardTask.h">
+			<Option target="Boost_Echo_Client"/>
+		</Unit>
+		<Unit filename="/home/yuval/Downloads/Ass3/Boost_Echo_Client/include/NotificationPacket.h">
+			<Option target="Boost_Echo_Client"/>
+		</Unit>
+		<Unit filename="/home/yuval/Downloads/Ass3/Boost_Echo_Client/include/Packet.h">
+			<Option target="Boost_Echo_Client"/>
+		</Unit>
+		<Unit filename="/home/yuval/Downloads/Ass3/Boost_Echo_Client/include/Protocol.h">
+			<Option target="Boost_Echo_Client"/>
+		</Unit>
+		<Unit filename="/home/yuval/Downloads/Ass3/Boost_Echo_Client/include/StatAckPacket.h">
+			<Option target="Boost_Echo_Client"/>
+		</Unit>
+		<Unit filename="/home/yuval/Downloads/Ass3/Boost_Echo_Client/makefile">
+			<Option target="Boost_Echo_Client"/>
+		</Unit>
+		<Unit filename="/home/yuval/Downloads/Ass3/Boost_Echo_Client/src/AckFollowPacket.cpp">
+			<Option target="Boost_Echo_Client"/>
+		</Unit>
+		<Unit filename="/home/yuval/Downloads/Ass3/Boost_Echo_Client/src/AckPacket.cpp">
+			<Option target="Boost_Echo_Client"/>
+		</Unit>
+		<Unit filename="/home/yuval/Downloads/Ass3/Boost_Echo_Client/src/AckUserListPacket.cpp">
+			<Option target="Boost_Echo_Client"/>
+		</Unit>
+		<Unit filename="/home/yuval/Downloads/Ass3/Boost_Echo_Client/src/Client.cpp">
+			<Option target="Boost_Echo_Client"/>
+		</Unit>
+		<Unit filename="/home/yuval/Downloads/Ass3/Boost_Echo_Client/src/ConnectionHandler.cpp">
+			<Option target="Boost_Echo_Client"/>
+		</Unit>
+		<Unit filename="/home/yuval/Downloads/Ass3/Boost_Echo_Client/src/EncoderDecoder.cpp">
+			<Option target="Boost_Echo_Client"/>
+		</Unit>
+		<Unit filename="/home/yuval/Downloads/Ass3/Boost_Echo_Client/src/ErrorPacket.cpp">
+			<Option target="Boost_Echo_Client"/>
+		</Unit>
+		<Unit filename="/home/yuval/Downloads/Ass3/Boost_Echo_Client/src/KeyboardTask.cpp">
+			<Option target="Boost_Echo_Client"/>
+		</Unit>
+		<Unit filename="/home/yuval/Downloads/Ass3/Boost_Echo_Client/src/NotificationPacket.cpp">
+			<Option target="Boost_Echo_Client"/>
+		</Unit>
+		<Unit filename="/home/yuval/Downloads/Ass3/Boost_Echo_Client/src/Packet.cpp">
+			<Option target="Boost_Echo_Client"/>
+		</Unit>
+		<Unit filename="/home/yuval/Downloads/Ass3/Boost_Echo_Client/src/Protocol.cpp">
+			<Option target="Boost_Echo_Client"/>
+		</Unit>
+		<Unit filename="/home/yuval/Downloads/Ass3/Boost_Echo_Client/src/StatAckPacket.cpp">
+			<Option target="Boost_Echo_Client"/>
+		</Unit>
+		<Unit filename="/home/yuval/Downloads/Ass3/Boost_Echo_Client/src/echoClient.cpp">
+			<Option target="Boost_Echo_Client"/>
+		</Unit>
+		<Unit filename="/home/yuval/Downloads/Ass3/Boost_Echo_Client/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
