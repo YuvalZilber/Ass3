@@ -126,9 +126,6 @@
 		<Unit filename="/home/yuval/Downloads/Ass3/Boost_Echo_Client/include/StatAckPacket.h">
 			<Option target="Boost_Echo_Client"/>
 		</Unit>
-		<Unit filename="/home/yuval/Downloads/Ass3/Boost_Echo_Client/makefile">
-			<Option target="Boost_Echo_Client"/>
-		</Unit>
 		<Unit filename="/home/yuval/Downloads/Ass3/Boost_Echo_Client/src/AckFollowPacket.cpp">
 			<Option target="Boost_Echo_Client"/>
 		</Unit>

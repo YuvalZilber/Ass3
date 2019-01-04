@@ -9,14 +9,14 @@
 
 class AckUserListPacket :public AckPacket{
 private:
-    short numOfUsers;
     std::string userNameList;
+    short numOfUsers;
 public:
     AckUserListPacket();
     AckUserListPacket(short _numOfUsers,std::string _userNameList);
     AckUserListPacket(const AckUserListPacket&ackUserListPacket);
     AckUserListPacket& operator=(const AckUserListPacket&ackUserListPacket);
-    ~AckUserListPacket()= default;
+    virtual ~AckUserListPacket()= default;
     short GetNumOfUsers();
     std::string GetUserNameList();
 };

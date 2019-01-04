@@ -6,14 +6,15 @@
 
 #include "AckUserListPacket.h"
 
-AckUserListPacket::AckUserListPacket():AckPacket(7), userNameList(""),numOfUsers(0){}
+AckUserListPacket::AckUserListPacket() : AckPacket(7), userNameList(""), numOfUsers(0) {}
 
-AckUserListPacket::AckUserListPacket(const AckUserListPacket &ackUserListPacket):AckPacket(7),userNameList(ackUserListPacket.userNameList),numOfUsers(ackUserListPacket.numOfUsers){
+AckUserListPacket::AckUserListPacket(const AckUserListPacket &ackUserListPacket) : AckPacket(7), userNameList(
+        ackUserListPacket.userNameList), numOfUsers(ackUserListPacket.numOfUsers) {
 }
 
 AckUserListPacket &AckUserListPacket::operator=(const AckUserListPacket &ackUserListPacket) {
-    userNameList=ackUserListPacket.userNameList;
-    numOfUsers=ackUserListPacket.numOfUsers;
+    userNameList = ackUserListPacket.userNameList;
+    numOfUsers = ackUserListPacket.numOfUsers;
     return *this;
 }
 
@@ -25,7 +26,8 @@ std::string AckUserListPacket::GetUserNameList() {
     return userNameList;
 }
 
-AckUserListPacket::AckUserListPacket(short _numOfUsers, std::string _userNameList) {
-numOfUsers=_numOfUsers;
-userNameList= std::move(_userNameList);
+AckUserListPacket::AckUserListPacket(short _numOfUsers, std::string _userNameList) : AckPacket(7),
+                                                                                     userNameList(
+                                                                                             std::move(_userNameList)),
+                                                                                     numOfUsers(_numOfUsers) {
 }

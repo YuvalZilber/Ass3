@@ -5,7 +5,7 @@ import bgu.spl.net.api.bidi.Connections;
 import bgu.spl.net.impl.BGSServer.Messages.*;
 import bgu.spl.net.impl.ConnectionsImpl;
 
-import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.Arrays;
 
 public class bgsProtocol implements BidiMessagingProtocol<Message> {
     private final Database db;
@@ -13,7 +13,7 @@ public class bgsProtocol implements BidiMessagingProtocol<Message> {
 
     private boolean shouldTerminate;
 
-    public bgsProtocol(Database db) {
+    bgsProtocol(Database db) {
         this.db = db;
         this.shouldTerminate = false;
     }
@@ -27,26 +27,34 @@ public class bgsProtocol implements BidiMessagingProtocol<Message> {
     @SuppressWarnings("cast")
     @Override
     public void process(Message message) {
+        int[] requiredLoggedin = new int[]{3, 4, 5, 6, 7, 8};//all > 2
         short code = message.opCode;
 
 
-        if (code == 1) {////////////////////////////////
-            MessageREGISTER register = (MessageREGISTER) message;
-            complete(db.register(register.getUsername(), register.getPassword()), message);
-            return;
-        }
-        if (code == 2) {///////////////////////////////////
-            MessageLOGIN login = (MessageLOGIN) message;
-            db.login(login.getUsername(), login.getPassword(), id);
-
-            return;
-        }
+//        if (code == 1) {////////////////////////////////
+//            MessageREGISTER register = (MessageREGISTER) message;
+//            complete(db.register(register.getUsername(), register.getPassword()), message);
+//            return;
+//        }
+//        if (code == 2) {///////////////////////////////////
+//            MessageLOGIN login = (MessageLOGIN) message;
+//            db.login(login.getUsername(), login.getPassword(), id);
+//            return;
+//        }
         User user = db.getUser(id);
-        if (user == null || (code > 2 && user.getId() == -1)) {
+        if (Arrays.binarySearch(requiredLoggedin, code) > 0 & (user == null || user.getId() == -1)) {
             error(code);
             return;
         }
         switch (code) {
+            case 1:
+                MessageREGISTER register = (MessageREGISTER) message;
+                complete(db.register(register.getUsername(), register.getPassword()), message);
+                break;
+            case 2:
+                MessageLOGIN login = (MessageLOGIN) message;
+                db.login(login.getUsername(), login.getPassword(), id);
+                break;
             case 3:
                 db.logout(id);
                 break;

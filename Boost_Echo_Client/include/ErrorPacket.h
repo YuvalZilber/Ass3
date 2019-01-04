@@ -15,7 +15,7 @@ public:
     ErrorPacket(short _msgopcode);
     ErrorPacket(const ErrorPacket& errorPacket);
     ErrorPacket& operator=(const ErrorPacket& errorPacket);
-    ~ErrorPacket()= default;
+    virtual ~ErrorPacket()= default;
     short GetmsgOpcode();
 
 

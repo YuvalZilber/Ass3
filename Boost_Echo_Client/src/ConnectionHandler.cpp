@@ -1,12 +1,10 @@
 #include <ConnectionHandler.h>
-#include <EncoderDecoder.h>
 #include <ErrorPacket.h>
 #include <NotificationPacket.h>
 #include <AckPacket.h>
 #include <AckFollowPacket.h>
 #include <AckUserListPacket.h>
 #include <StatAckPacket.h>
-#include "../include/EncoderDecoder.h"
 
 using boost::asio::ip::tcp;
 
@@ -19,7 +17,7 @@ using std::string;
 
 ConnectionHandler::ConnectionHandler(string host, short port) : host_(host), port_(port), io_service_(),
                                                                 socket_(io_service_), encDec(),
-                                                                isDisconnectApproved(false),msg() {}
+                                                                isDisconnectApproved(false), msg() {}
 
 ConnectionHandler::~ConnectionHandler() {
     close();
@@ -55,6 +53,12 @@ bool ConnectionHandler::getBytes(char bytes[], unsigned int bytesToRead) {
         std::cerr << "recv failed (Error: " << e.what() << ')' << std::endl;
         return false;
     }
+
+//    cout << "[";
+//    for (size_t i = 0; i < tmp; ++i) {
+//        cout << (int) bytes[i] << ", ";
+//    }
+//    cout << "]" << endl;
     return true;
 }
 
@@ -113,7 +117,7 @@ void ConnectionHandler::close() {
     }
 }
 
-void ConnectionHandler::pushToVec(std::vector<char>& v, char *topush, int len) {
+void ConnectionHandler::pushToVec(std::vector<char> &v, char *topush, int len) {
     for (int i = 0; i < len; ++i)
         v.push_back(topush[i]);
 }
@@ -129,13 +133,13 @@ Packet *ConnectionHandler::DecodeNotification() {
     char type = (*msg)[2];
 
     vector<char> postingBytes = vector<char>();
-    for (int i = 3; (*msg)[i] != '0'; ++i) {
+    for (int i = 3; (*msg)[i] != ' '; ++i) {
         postingBytes.push_back((*msg)[i]);
     }
     std::string postingUser(postingBytes.begin(), postingBytes.end());
 
-    vector<char> contentBytes =  vector<char>();
-    for (int j = 3 + 1 + postingUser.length(); (*msg)[j] != '0'; ++j) {
+    vector<char> contentBytes = vector<char>();
+    for (int j = 3 + 1 + (int)postingUser.length(); (*msg)[j] != '\0'; ++j) {
         contentBytes.push_back((*msg)[j]);
     }
     std::string content(contentBytes.begin(), contentBytes.end());
@@ -146,35 +150,36 @@ Packet *ConnectionHandler::DecodeNotification() {
 }
 
 Packet *ConnectionHandler::decodeNextMessage() {//translating bytes into packet for the benefit of the client
-msg=new vector<char>();
+    msg = new vector<char>();
     char *opcode = new char[2];
     getBytes(opcode, 2);
     pushToVec(*msg, opcode, 2);
+
     switch (bytesToShort(opcode)) {
 
-       // default: {
+        // default: {
 
-            //decoding cases from server
-            case 9:
-                pushToMsg(1);
+        //decoding cases from server
+        case 9:
+            pushToMsg(1);
             pushToMsg(-2);
 
             return DecodeNotification();
-            case 10:
-                pushToMsg(2);
+        case 10:
+            pushToMsg(2);
             return DecodeAck();
-            case 11: {
-                pushToMsg(2);
-                char* arr=new char[2];
-                arr[0] = (*msg)[2];
-                arr[1] = (*msg)[3];
-                ErrorPacket *errorPacket = new ErrorPacket(bytesToShort(arr));
-                return errorPacket;
-            }
+        case 11: {
+            pushToMsg(2);
+            char *arr = new char[2];
+            arr[0] = (*msg)[2];
+            arr[1] = (*msg)[3];
+            ErrorPacket *errorPacket = new ErrorPacket(bytesToShort(arr));
+            return errorPacket;
+        }
 
-
-      //  }
+            //  }
     }
+    return nullptr;
 }
 
 
@@ -186,25 +191,40 @@ Packet *ConnectionHandler::DecodeAck() {
     switch (msgOpcode) {
         case 4: {
             char *numusers = new char[2];
-            numusers[0] = (*msg)[4];
-            numusers[1] = (*msg)[5];
+            getBytes(numusers, 2);
             short numOfUsers = bytesToShort(numusers);
-          string userNameList="";
-            for (int i = 6; i < (*msg).size(); ++i)
-                userNameList += (*msg)[i] == 0 ? ' ': (*msg)[i];
-
+            string userNameList = "";
+            char *tmp = new char[1];
+            for (int i = 0; i < (int)numOfUsers;) {
+                getBytes(tmp, 1);
+                if ((tmp[0] == 0) & (i + 1 == numOfUsers))
+                    break;
+                else if (tmp[0] == 0) {
+                    i++;
+                    userNameList += ' ';
+                } else
+                    userNameList += tmp[0];
+            }
             AckFollowPacket *ackFollowPacket = new AckFollowPacket(numOfUsers, userNameList);
             ackFollowPacket->SetMsgOpcode(4);
             return ackFollowPacket;
         }
         case 7: {
             char *numusers = new char[2];
-            numusers[0] = (*msg)[4];
-            numusers[1] = (*msg)[5];
+            getBytes(numusers, 2);
             short numOfUsers = bytesToShort(numusers);
-            std::string userNameList="";
-            for (int i = 6; i < (*msg).size(); ++i)
-                userNameList += (*msg)[i] == 0 ? ' ': (*msg)[i];
+            std::string userNameList = "";
+            char *tmp = new char[1];
+            for (int i = 0; i < (int)numOfUsers;) {
+                getBytes(tmp, 1);
+                if ((tmp[0] == 0) & (i + 1 == numOfUsers))
+                    break;
+                else if (tmp[0] == 0) {
+                    i++;
+                    userNameList += ' ';
+                } else
+                    userNameList += tmp[0];
+            }
             AckUserListPacket *listPacket = new AckUserListPacket(numOfUsers, userNameList);
             listPacket->SetMsgOpcode(7);
             return listPacket;
@@ -212,16 +232,13 @@ Packet *ConnectionHandler::DecodeAck() {
 
         case 8: {
             char *postsNum = new char[2];
-            postsNum[0] = (*msg)[4];
-            postsNum[1] = (*msg)[5];
+            getBytes(postsNum, 2);
             short postNumber = bytesToShort(postsNum);
             char *follownum = new char[2];
-            follownum[0] = (*msg)[6];
-            follownum[1] = (*msg)[7];
+            getBytes(follownum, 2);
             short follownumber = bytesToShort(follownum);
             char *followingnum = new char[2];
-            followingnum[0] = (*msg)[8];
-            followingnum[1] = (*msg)[9];
+            getBytes(followingnum, 2);
             short followingnumber = bytesToShort(followingnum);
 
             StatAckPacket *statAckPacket = new StatAckPacket(postNumber, follownumber, followingnumber);
@@ -239,10 +256,10 @@ Packet *ConnectionHandler::DecodeAck() {
 bool ConnectionHandler::sendPacket(Packet &packet) {
     char *toSend = encDec.encode(packet);//converting packet to bytes
     int length = packet.getSize();
-    for (int i = 0; i < length; ++i) {
-        std::cout<<(int)toSend[i]<<", ";
-    }
-    std::cout<<endl;
+//    for (int i = 0; i < length; ++i) {
+//        std::cout << (int) toSend[i] << ", ";
+//    }
+//    std::cout << endl;
     bool isDone = sendBytes(toSend, length);
     return isDone;
 }

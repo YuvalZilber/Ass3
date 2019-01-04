@@ -9,15 +9,24 @@ public class NOTIFICATION extends Message {
         super((short) 9);
     }
 
-    public void setType(Character type) {
-        Character type1 = type;
+    public void setType(Byte type) {
+        this.type = type;
     }
 
     public void setPostinUser(String postinUser) {
-        String postinUser1 = postinUser;
+        this.postingUser = postinUser;
     }
 
     public void setContent(String content) {
-        String content1 = content;
+        this.content = content;
+    }
+
+    Byte type;
+    String postingUser;
+String content;
+
+    @Override
+    public String toString() {
+        return "NOTIFOCATION: "+(type==0?"PM":"POST")+" "+postingUser+" "+content;
     }
 }

@@ -19,9 +19,9 @@ private:
 public:
     EncoderDecoder();
 
-    EncoderDecoder(const EncoderDecoder &aaa);
+    EncoderDecoder(const EncoderDecoder &);
 
-    EncoderDecoder &operator=(const EncoderDecoder &aaa);
+    EncoderDecoder &operator=(const EncoderDecoder &);
 
     virtual ~EncoderDecoder();
 

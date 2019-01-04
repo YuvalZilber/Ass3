@@ -33,4 +33,9 @@ public class ACK extends Message {
     public Object[] getOptional() {
         return optional.toArray(new Object[0]);
     }
+
+    @Override
+    public String toString() {
+        return "ACK "+messageOpcode+" "+Arrays.toString(optional.toArray());
+    }
 }

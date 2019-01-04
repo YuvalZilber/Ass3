@@ -19,7 +19,7 @@ public:
     StatAckPacket(short _numOfPosts, short _numOfFollowers, short _numOfFollowing);
     StatAckPacket(const StatAckPacket&statAckPacket);
     StatAckPacket& operator=(const StatAckPacket&statAckPacket);
-    ~StatAckPacket()= default;
+    virtual ~StatAckPacket()= default;
     short GetNumOfPosts();
     short GetNumOfFollowers();
     short GetNumOfFollowing();

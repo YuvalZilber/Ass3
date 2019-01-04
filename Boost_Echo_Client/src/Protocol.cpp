@@ -12,12 +12,12 @@
 
 #include "Protocol.h"
 
-Protocol::Protocol(ConnectionHandler *connectionHandler) {
-    connectionHand = connectionHandler;
+Protocol::Protocol(ConnectionHandler *connectionHandler_):connectionHand(connectionHandler_) {
+
 }
 
-Protocol::Protocol(const Protocol &aProtocol) {
-    connectionHand = aProtocol.connectionHand;
+Protocol::Protocol(const Protocol &aProtocol):connectionHand(aProtocol.connectionHand) {
+
 }
 
 Protocol &Protocol::operator=(const Protocol &aProtocol) {

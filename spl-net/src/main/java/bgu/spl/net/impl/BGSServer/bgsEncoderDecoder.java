@@ -32,9 +32,12 @@ public class bgsEncoderDecoder implements MessageEncoderDecoder {
             if (bytes.size() == 2) {/**if got the seccond {@code: opcode} byte*/
                 Short code = ByteBuffer.wrap(new byte[]{bytes.get(0), bytes.get(1)}).getShort();
                 //initiate collections
-                bytes.clear();
                 splitters.clear();
                 curType = getClassByOpcode(code);
+                if (curType == null) {
+                    System.out.println("***"+code+" - " + Arrays.toString(bytes.toArray()) + " last: " + nextByte);
+                }
+                bytes.clear();
                 params = curType.getDeclaredFields();
                 //initiate indexes & counters
                 remains0 = 0;
@@ -43,10 +46,8 @@ public class bgsEncoderDecoder implements MessageEncoderDecoder {
             }
         }
         else {
-            if (nextByte == 0 && field2length(params[paramIndex]) < 0)
-                remains0--;
-            if (remainsForParam > 0)
-                remainsForParam--;
+            if (nextByte == 0 && field2length(params[paramIndex]) < 0) remains0--;
+            if (remainsForParam > 0) remainsForParam--;
         }
         //if it is the last byte of the facking message
         if (((nextByte == 0 & remains0 == 0 & remainsForParam < 0) | remainsForParam == 0) &
@@ -165,7 +166,7 @@ public class bgsEncoderDecoder implements MessageEncoderDecoder {
     public byte[] encode(Object obj) {
         if (!(obj instanceof Message)) return null;
         Message msg = (Message) obj;
-        System.out.println("encoding: "+msg.toString());
+        System.out.println("encoding: " + msg.toString());
         byte[] bytes = value2bytes(msg.opCode);
         if (!(msg instanceof ACK)) {
             Object[] values = message2values(msg);
@@ -176,6 +177,7 @@ public class bgsEncoderDecoder implements MessageEncoderDecoder {
             bytes = concat(bytes, value2bytes(ack.getMessageOpcode()));
             bytes = concat(bytes, values2bytes(ack.getOptional()));
         }
+        System.out.println("encoded: " + Arrays.toString(bytes));
         return bytes;
     }
 
@@ -202,13 +204,19 @@ public class bgsEncoderDecoder implements MessageEncoderDecoder {
 
     private static byte[] value2bytes(Object value) {
         Class type = value.getClass();
-        if (type == short.class | type == Short.class | type == char.class)
-            return new byte[]{(byte) ((short) value >> 8),(byte) ((short)value)};
+        if (type == short.class | type == Short.class)
+            return new byte[]{(byte) ((short) value >> 8 & 0xff), (byte) ((short) value & 0xff)};
+        if (type == char.class | type == Character.class)
+            return new byte[]{(byte) ((short) (int) ((Character) value) >> 8 &
+                                      0xff), (byte) ((short) (int) ((Character) value) & 0xff)};
         if (type == byte.class | type == Byte.class) return new byte[]{(byte) value};
         if (type == String.class) return ((String) value + '\0').getBytes(Charset.forName("UTF8"));
-        if (type == String[].class & ((String[]) value).length == 0) return new byte[0];
+        if (type == String[].class && ((String[]) value).length == 0) return new byte[0];
         if (type == String[].class) return concat(value2bytes(((String[]) value)[0]),
-                                                  value2bytes(Arrays.copyOfRange(((String[]) value), 1,((String[]) value).length)));
+                                                  value2bytes(Arrays.copyOfRange(((String[]) value),
+                                                                                 1,
+                                                                                 ((String[]) value).length)));
+        System.out.println("*********3453************" + type.getSimpleName());
         return new byte[0];
     }
 

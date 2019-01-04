@@ -2,7 +2,7 @@ package bgu.spl.net.impl.BGSServer;
 
 public abstract class Message {
     
-    protected final Short opCode;
+    final Short opCode;
 
     public Message(short opCode) {
         this.opCode = opCode;

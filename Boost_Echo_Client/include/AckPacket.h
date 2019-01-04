@@ -16,7 +16,7 @@ public:
     AckPacket(short _msgopCode);
     AckPacket(const AckPacket& packet);
     AckPacket& operator=(const AckPacket& packet);
-    ~AckPacket()= default;
+    virtual ~AckPacket()= default;
     short GetMsgOpcode();
     void SetMsgOpcode(short msg);
 

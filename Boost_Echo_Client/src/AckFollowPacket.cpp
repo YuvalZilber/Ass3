@@ -8,11 +8,9 @@
 
 //short numOfUsers;
 //    std::string userNameList;
-AckFollowPacket::AckFollowPacket() : AckPacket(4),userNameList(""), numOfUsers(0) {}
+AckFollowPacket::AckFollowPacket() : AckPacket(4), numOfUsers(0),userNameList("") {}
 
-AckFollowPacket::AckFollowPacket(const AckFollowPacket &ackFollowPacket) :AckPacket(4),numOfUsers(ackFollowPacket.numOfUsers) {
-    userNameList = ackFollowPacket.userNameList;
-}
+AckFollowPacket::AckFollowPacket(const AckFollowPacket &ackFollowPacket) :AckPacket(4),numOfUsers(ackFollowPacket.numOfUsers),userNameList(ackFollowPacket.userNameList) {}
 
 AckFollowPacket &AckFollowPacket::operator=(const AckFollowPacket &ackFollowPacket) {
     userNameList = ackFollowPacket.userNameList;
@@ -28,9 +26,7 @@ std::string AckFollowPacket::GetUserNameList() {
     return userNameList;
 }
 
-AckFollowPacket::AckFollowPacket(short _numOfUsers, std::string _userNameList) {
-    numOfUsers = _numOfUsers;
-    userNameList = std::to_string(_numOfUsers);
+AckFollowPacket::AckFollowPacket(short _numOfUsers, std::string _userNameList) : AckPacket(4),numOfUsers(_numOfUsers),userNameList(_userNameList) {
 }
 
 

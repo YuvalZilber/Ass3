@@ -30,7 +30,7 @@ int main2 (int argc, char *argv[]) {
             break;
         }
 		// connectionHandler.sendLine(line) appends '\n' to the message. Therefor we send len+1 bytes.
-        std::cout << "Sent " << len+1 << " bytes to server" << std::endl;
+        ////std::cout << "Sent " << len+1 << " bytes to server" << std::endl;
 
  
         // We can use one of three options to read data from the server:

@@ -6,18 +6,17 @@
 
 #include <Packet.h>
 
-#include "Packet.h"
 //varaibles:
 // short opCode;
 
-Packet::Packet():opCode(-1),msgcontent(""),length(0) {}
+Packet::Packet() : opCode(-1), msgcontent(""), length(0) {}
 
-Packet::Packet(const Packet &packet):opCode(packet.opCode),length(packet.length) {}
+Packet::Packet(const Packet &packet) : opCode(packet.opCode), msgcontent(""), length(packet.length) {}
 
-Packet::Packet(short _opCode,std::string msg,int plength):opCode(_opCode),msgcontent(msg),length(plength) {}
+Packet::Packet(short _opCode, std::string msg, int plength) : opCode(_opCode), msgcontent(msg), length(plength) {}
 
 Packet &Packet::operator=(const Packet &packet) {
-    opCode=packet.opCode;
+    opCode = packet.opCode;
     return *this;
 }
 
@@ -30,16 +29,14 @@ std::string Packet::GetMsg() const {
 }
 
 void Packet::SetMsg(std::string toset) {
-msgcontent= std::move(toset);
+    msgcontent = std::move(toset);
 }
 
 int Packet::getSize() {
     return length;
 }
 
-Packet::Packet(short opcode) {
-opCode=opcode;
-}
+Packet::Packet(short opcode) : opCode(opcode),msgcontent(),length(){}
 
 
 

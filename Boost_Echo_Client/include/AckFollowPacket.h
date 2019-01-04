@@ -16,7 +16,7 @@ public:
     AckFollowPacket(short _numOfUsers, std::string _userNameList);
     AckFollowPacket(const AckFollowPacket&ackFollowPacket);
     AckFollowPacket& operator=(const AckFollowPacket&ackFollowPacket);
-    ~AckFollowPacket()= default;
+    virtual ~AckFollowPacket()= default;
     short GetNumOfUsers();
     std::string GetUserNameList();
     //int size() override;

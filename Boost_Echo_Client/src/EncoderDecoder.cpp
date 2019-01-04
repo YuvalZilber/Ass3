@@ -20,11 +20,11 @@
 //    Packet* decodedPacket;
 using namespace std;
 
-EncoderDecoder::EncoderDecoder() : decodedPacket(nullptr) {
+EncoderDecoder::EncoderDecoder() :msg(), decodedPacket(nullptr) {
 
 }
 
-EncoderDecoder::EncoderDecoder(const EncoderDecoder &encoderDecoder) : decodedPacket(nullptr) {
+EncoderDecoder::EncoderDecoder(const EncoderDecoder &encoderDecoder) :msg(), decodedPacket(nullptr) {
     msg[0] = encoderDecoder.msg[0];
     msg[1] = encoderDecoder.msg[1];
     if (encoderDecoder.decodedPacket != nullptr)
@@ -63,11 +63,11 @@ char *EncoderDecoder::encode(const Packet &p) {
         char *password = const_cast<char *>(splitmsg[2].c_str());
         output.push_back(0);
         output.push_back(1);
-        for (int i = 0; i < strlen(username); ++i) {
+        for (int i = 0; i < (int)strlen(username); ++i) {
             output.push_back(username[i]);
         }
         output.push_back(0);
-        for (int j = 0; j < strlen(password); ++j) {
+        for (int j = 0; j < (int)strlen(password); ++j) {
             output.push_back(password[j]);
         }
         output.push_back('\0');
@@ -79,11 +79,11 @@ char *EncoderDecoder::encode(const Packet &p) {
         char *password = const_cast<char *>(splitmsg[2].c_str());
         output.push_back(0);
         output.push_back(2);
-        for (int i = 0; i < strlen(username); ++i) {
+        for (int i = 0; i < (int)strlen(username); ++i) {
             output.push_back(username[i]);
         }
         output.push_back('\0');
-        for (int j = 0; j < strlen(password); ++j) {
+        for (int j = 0; j < (int)strlen(password); ++j) {
             output.push_back(password[j]);
         }
         output.push_back('\0');
@@ -107,12 +107,12 @@ char *EncoderDecoder::encode(const Packet &p) {
 
         int fnumber = std::stoi(splitmsg[2]);
         std::vector<char> follow = intToBytes(fnumber);
-        for (int i = 0; i < follow.size(); ++i) {
+        for (unsigned i = 0; i < follow.size(); ++i) {
             output.push_back(follow[i]);
         }
-        for (int j = 3; j < splitmsg.size(); ++j) {
+        for (int j = 3; j < (int)splitmsg.size(); ++j) {
             char *userNameList = const_cast<char *>(splitmsg[j].c_str());
-            for (int i = 0; i < strlen(userNameList); i++) {
+            for (unsigned int i = 0; i < strlen(userNameList); i++) {
                 output.push_back(userNameList[i]);
 
             }
@@ -125,9 +125,8 @@ char *EncoderDecoder::encode(const Packet &p) {
         output.push_back(0);
         output.push_back(5);
 
-        char *content = const_cast<char *>(splitmsg[1].c_str());
-        for (int i = 0; i < strlen(content); i++) {
-            output.push_back(content[i]);
+        for (unsigned long i = splitmsg[0].length()+1; i<msg.length(); i++) {
+            output.push_back(msg[i]);
         }
         output.push_back('\0');
     }
@@ -135,12 +134,12 @@ char *EncoderDecoder::encode(const Packet &p) {
         output.push_back(0);
         output.push_back(6);
         char *userName = const_cast<char *>(splitmsg[1].c_str());
-        for (int i = 0; i < strlen(userName); i++) {
+        for (unsigned long i = 0; i < strlen(userName); i++) {
             output.push_back(userName[i]);
         }
         output.push_back(0);
         char *content = const_cast<char *>(splitmsg[2].c_str());
-        for (int i = 0; i < strlen(content); i++) {
+        for (unsigned long  i = 0; i < strlen(content); i++) {
             output.push_back(content[i]);
         }
         output.push_back('\0');
@@ -154,13 +153,13 @@ char *EncoderDecoder::encode(const Packet &p) {
         output.push_back(0);
         output.push_back(8);
         char *userName = const_cast<char *>(splitmsg[1].c_str());
-        for (int i = 0; i < strlen(userName); i++) {
+        for (unsigned long i = 0; i < strlen(userName); i++) {
             output.push_back(userName[i]);
         }
         output.push_back('\0');
     }
     char *kkk = new char[output.size()];
-    for (int k = 0; k < output.size(); ++k) {
+    for (unsigned long k = 0; k < output.size(); ++k) {
         kkk[k] = static_cast<char>(output[k].to_ullong());
     }
     return kkk;

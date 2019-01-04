@@ -7,22 +7,27 @@
 
 #include "Packet.h"
 
-class NotificationPacket : public Packet{
+class NotificationPacket : public Packet {
 private:
-std::string postingUser;
+    std::string postingUser;
     char type;//pm (0) post(1)
-std::string content;
+    std::string content;
 public:
     NotificationPacket();
-    NotificationPacket(std::string _postingUser, char _type,std::string _content);
-    NotificationPacket(const NotificationPacket& notificationPacket);
-    NotificationPacket& operator=(const NotificationPacket& notificationPacket);
-    ~NotificationPacket()= default;
+
+    NotificationPacket(std::string _postingUser, char _type, std::string _content);
+
+    NotificationPacket(const NotificationPacket &notificationPacket);
+
+    NotificationPacket &operator=(const NotificationPacket &notificationPacket);
+
+    virtual ~NotificationPacket() = default;
+
     std::string getPostingUser();
+
     std::string getContent();
+
     short getType();
-
-
 
 
 };

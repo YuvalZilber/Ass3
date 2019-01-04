@@ -19,7 +19,7 @@ public:
     Packet(short _opCode,std::string msg,int plength);
     Packet(const Packet& packet);
     virtual Packet& operator=(const Packet& packet);
-    ~Packet()= default;
+    virtual ~Packet()= default;
     short GetOpcode();
     std::string GetMsg() const;
     void SetMsg(std::string toset);

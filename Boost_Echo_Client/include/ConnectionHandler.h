@@ -15,11 +15,13 @@ private:
 	const short port_;
 	boost::asio::io_service io_service_;   // Provides core I/O functionality
 	tcp::socket socket_;
-    bool isDisconnectApproved;
     EncoderDecoder encDec;
+    bool isDisconnectApproved;
     std::vector<char>* msg;
 public:
     ConnectionHandler(std::string host, short port);
+    ConnectionHandler(const ConnectionHandler&)= default;
+    ConnectionHandler& operator=(const ConnectionHandler&)= default;
     virtual ~ConnectionHandler();
 
     // Connect to the remote machine
