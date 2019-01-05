@@ -41,7 +41,7 @@ class Database {
         User user;
         users.lockReader();//#
         user = getUser(name);
-        if (user == null || getUser(id) != null || !user.getPassword().equals(password) || user.getId() != -1) {
+        if (user == null || getUser(id) != null) {
             error(2, id);
             users.lockReaderRelease();
             return;
@@ -50,6 +50,11 @@ class Database {
 
 
         user.lockWriter();//#
+        if (!user.getPassword().equals(password) || user.getId() != -1) {
+            error(2, id);
+            user.lockWriterRelease();
+            return;
+        }
         user.login(id);
         success((short) 2, id);
         ConcurrentLinkedQueue<NOTIFICATION> missed = user.getMissed();
@@ -100,9 +105,9 @@ class Database {
         Users didit = new Users();
         for (String name : names) {
             User toFollow = users.get(name);
-
-            if (user.follow(todo, toFollow))
-                didit.addIfAbsent(toFollow.getName());
+            if(toFollow!=null)
+                if (user.follow(todo, toFollow))
+                    didit.addIfAbsent(toFollow.getName());
         }
 
         if (didit.size() > 0) {
@@ -128,10 +133,17 @@ class Database {
         tagged = Arrays.stream(tagged).filter(x -> x.charAt(0) == '@').toArray(String[]::new);
         Arrays.stream(tagged).forEach(x -> {
             User reciever = getUser(x.substring(1));
-            if (reciever != null)
-                usersFollowing.add(reciever);
+            if (reciever != null) {
+                boolean good = true;
+                for (User exist : usersFollowing) {
+                    if (exist.getName() == reciever.getName())
+                        good = false;
+                }
+                if (good)
+                    usersFollowing.add(reciever);
+            }
         });
-        final NOTIFICATION notification = generateNotification(sender.getName(), post, (byte)1);
+        final NOTIFICATION notification = generateNotification(sender.getName(), post, (byte) 1);
 
         usersFollowing.forEach(user -> notify(user, notification));
         success(5, id);
@@ -152,13 +164,13 @@ class Database {
     }
 
     boolean sendPM(int id, MessagePM pm) {
-        User user = getUserAndError(6, id, true, false);
-        if (user == null) return false;
+        User sender = getUserAndError(6, id, true, false);
+        if (sender == null) return false;
         User reciever = users.get(pm.getUsername());
         if (reciever == null) return false;
-        NOTIFICATION notification = generateNotification(user.getName(), pm, (byte)0);
+        NOTIFICATION notification = generateNotification(sender.getName(), pm, (byte) 0);
 
-        notify(user, notification);
+        notify(reciever, notification);
         return true;
     }
 

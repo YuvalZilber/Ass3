@@ -6,7 +6,7 @@ public class TPCMain {
     public static void main(String[] args) {
         Database db = new Database();
         if (args.length == 0)
-            args = new String[]{"7777"};
+            args = new String[]{"8888"};
         Server.threadPerClient(
                 Integer.parseInt(args[0]), //port
                 () -> new bgsProtocol(db), //protocol factory

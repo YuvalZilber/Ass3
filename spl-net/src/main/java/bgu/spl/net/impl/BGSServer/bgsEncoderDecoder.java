@@ -3,6 +3,7 @@ package bgu.spl.net.impl.BGSServer;
 import bgu.spl.net.api.MessageEncoderDecoder;
 import bgu.spl.net.impl.BGSServer.Messages.*;
 
+import javax.xml.bind.SchemaOutputResolver;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
@@ -27,54 +28,66 @@ public class bgsEncoderDecoder implements MessageEncoderDecoder {
     @SuppressWarnings("all")
     @Override
     public Message decodeNextByte(byte nextByte) {
-        bytes.add(nextByte);
-        if (params == null) {//before discover message type
-            if (bytes.size() == 2) {/**if got the seccond {@code: opcode} byte*/
-                Short code = ByteBuffer.wrap(new byte[]{bytes.get(0), bytes.get(1)}).getShort();
-                //initiate collections
-                splitters.clear();
-                curType = getClassByOpcode(code);
-                if (curType == null) {
-                    System.out.println("***"+code+" - " + Arrays.toString(bytes.toArray()) + " last: " + nextByte);
+        try {
+            bytes.add(nextByte);
+            if (params == null) {//before discover message type
+                if (bytes.size() == 2) {/**if got the seccond {@code: opcode} byte*/
+                    Short code = ByteBuffer.wrap(new byte[]{bytes.get(0), bytes.get(1)}).getShort();
+                    //initiate collections
+                    splitters.clear();
+                    curType = getClassByOpcode(code);
+                    bytes.clear();
+                    params = curType.getDeclaredFields();
+                    //initiate indexes & counters
+                    remains0 = 0;
+                    paramIndex = -1;
+                    remainsForParam = 0;
                 }
-                bytes.clear();
-                params = curType.getDeclaredFields();
-                //initiate indexes & counters
+            }
+            else {
+                if (nextByte == 0 && field2length(params[paramIndex]) < 0) remains0--;
+                if (remainsForParam > 0) remainsForParam--;
+            }
+            //if it is the last byte of the facking message
+            if (((nextByte == 0 & remains0 == 0 & remainsForParam < 0) | remainsForParam == 0) &
+                (params != null && paramIndex == params.length - 1)) {
+                byte[] arr = new byte[bytes.size()];
                 remains0 = 0;
-                paramIndex = -1;
-                remainsForParam = 0;
+                bytes.forEach(b -> arr[remains0++] = b);
+                Message msg =
+                        messageGenerator(arr, curType, splitters.toArray(new Integer[0]));
+                params = null;
+                bytes.clear();
+                return msg;
+            }
+            //if it is the last byte of current parameter
+            else if (params != null &&
+                     (remainsForParam == 0 || (nextByte == 0 && params[paramIndex].getType() == String.class))) {
+                splitters.add(bytes.size());
+                paramIndex++;
+                remainsForParam = field2length(params[paramIndex]);
+                if (params[paramIndex].getType() ==
+                    String.class) {//if u r a string and NOT the last field u own a zero;
+                    remains0++;
+                }
+
+                if (params[paramIndex].getType() == String[].class)
+                    remains0 += ByteBuffer.wrap(new byte[]{bytes.get(1), bytes.get(2)}).getShort();
             }
         }
-        else {
-            if (nextByte == 0 && field2length(params[paramIndex]) < 0) remains0--;
-            if (remainsForParam > 0) remainsForParam--;
-        }
-        //if it is the last byte of the facking message
-        if (((nextByte == 0 & remains0 == 0 & remainsForParam < 0) | remainsForParam == 0) &
-            (params != null && paramIndex == params.length - 1)) {
-            byte[] arr = new byte[bytes.size()];
+        catch (NullPointerException npe) {
+
+            bytes.clear();
+            //initiate indexes & counters
             remains0 = 0;
-            bytes.forEach(b -> arr[remains0++] = b);
-            Message msg =
-                    messageGenerator(arr, curType, splitters.toArray(new Integer[0]));
+            paramIndex = -1;
+            remainsForParam = 0;
+            splitters.clear();
+            remains0 = 0;
             params = null;
             bytes.clear();
-            return msg;
+            System.out.println("********* woops i did it again. *********");
         }
-        //if it is the last byte of current parameter
-        else if (params != null &&
-                 (remainsForParam == 0 || (nextByte == 0 && params[paramIndex].getType() == String.class))) {
-            splitters.add(bytes.size());
-            paramIndex++;
-            remainsForParam = field2length(params[paramIndex]);
-            if (params[paramIndex].getType() == String.class) {//if u r a string and NOT the last field u own a zero;
-                remains0++;
-            }
-
-            if (params[paramIndex].getType() == String[].class)
-                remains0 += ByteBuffer.wrap(new byte[]{bytes.get(1), bytes.get(2)}).getShort();
-        }
-
         return null;
     }
 

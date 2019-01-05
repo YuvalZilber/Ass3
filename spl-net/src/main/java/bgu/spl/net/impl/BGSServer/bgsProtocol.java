@@ -30,17 +30,6 @@ public class bgsProtocol implements BidiMessagingProtocol<Message> {
         int[] requiredLoggedin = new int[]{3, 4, 5, 6, 7, 8};//all > 2
         short code = message.opCode;
 
-
-//        if (code == 1) {////////////////////////////////
-//            MessageREGISTER register = (MessageREGISTER) message;
-//            complete(db.register(register.getUsername(), register.getPassword()), message);
-//            return;
-//        }
-//        if (code == 2) {///////////////////////////////////
-//            MessageLOGIN login = (MessageLOGIN) message;
-//            db.login(login.getUsername(), login.getPassword(), id);
-//            return;
-//        }
         User user = db.getUser(id);
         if (Arrays.binarySearch(requiredLoggedin, code) > 0 & (user == null || user.getId() == -1)) {
             error(code);

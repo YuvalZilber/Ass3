@@ -1,7 +1,6 @@
 //
 // Created by shvatm on 12/31/18.
 //
-
 #include <KeyboardTask.h>
 
 //ConnectionHandler* connectionHandler;

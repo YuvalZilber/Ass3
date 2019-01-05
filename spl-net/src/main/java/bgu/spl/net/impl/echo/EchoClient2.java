@@ -17,6 +17,4 @@ class EchoClient2 {
         //BufferedReader and BufferedWriter automatically using UTF-8 encoding
         new EchoUtils().sendEchoMessages(args, "b");
     }
-
-
 }

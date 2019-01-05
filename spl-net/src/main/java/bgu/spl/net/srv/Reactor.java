@@ -111,6 +111,7 @@ public class Reactor<T> implements Server<T> {
         pool.submit(handler, () -> {
             int id = clients.add(handler);
             protocol.start(id, clients);
+            System.out.println("someone connected! - " + id + "    - ip: " + clientChan.socket().getInetAddress().toString().replaceAll("/",""));
         });
         clientChan.register(selector, SelectionKey.OP_READ | SelectionKey.OP_WRITE, handler);
     }

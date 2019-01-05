@@ -6,17 +6,41 @@
 
 #IncludeRegexTransform: 
 
-../include/NotificationPacket.h
+../include/ConnectionHandler.h
+EncoderDecoder.h
+-
+string
+-
+iostream
+-
+boost/asio.hpp
+-
+../include/EncoderDecoder.h
+../include/EncoderDecoder.h
+
+../include/EncoderDecoder.h
+vector
+-
 Packet.h
 ../include/Packet.h
+
+../include/KeyboardTask.h
+ConnectionHandler.h
+-
+Protocol.h
+-
 
 ../include/Packet.h
 string
 -
 
-/home/yuval/Downloads/Ass3/Boost_Echo_Client/src/NotificationPacket.cpp
-utility
+../include/Protocol.h
+Packet.h
 -
-NotificationPacket.h
+ConnectionHandler.h
+../include/ConnectionHandler.h
+
+/home/yuval/Downloads/Ass3/Boost_Echo_Client/src/KeyboardTask.cpp
+KeyboardTask.h
 -
 

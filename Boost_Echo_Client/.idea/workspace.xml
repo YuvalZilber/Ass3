@@ -12,65 +12,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5ddcae75-204b-4b32-815f-a89affbe1d58" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../spl-net/src/main/java/bgu/spl/net/impl/BGSServer/SmartLocker.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Boost_Echo_Client" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Boost_Echo_Client" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Boost_Echo_Client.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Boost_Echo_Client.cbp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Boost_Echo_Client.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Boost_Echo_Client.dir/CXX.includecache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Boost_Echo_Client.dir/depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Boost_Echo_Client.dir/depend.internal" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Boost_Echo_Client.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Boost_Echo_Client.dir/depend.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Boost_Echo_Client.dir/src/AckFollowPacket.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Boost_Echo_Client.dir/src/AckFollowPacket.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Boost_Echo_Client.dir/src/AckPacket.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Boost_Echo_Client.dir/src/AckPacket.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Boost_Echo_Client.dir/src/AckUserListPacket.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Boost_Echo_Client.dir/src/AckUserListPacket.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Boost_Echo_Client.dir/src/Client.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Boost_Echo_Client.dir/src/Client.cpp.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Boost_Echo_Client.dir/src/ConnectionHandler.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Boost_Echo_Client.dir/src/ConnectionHandler.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Boost_Echo_Client.dir/src/EncoderDecoder.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Boost_Echo_Client.dir/src/EncoderDecoder.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Boost_Echo_Client.dir/src/ErrorPacket.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Boost_Echo_Client.dir/src/ErrorPacket.cpp.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Boost_Echo_Client.dir/src/KeyboardTask.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Boost_Echo_Client.dir/src/KeyboardTask.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Boost_Echo_Client.dir/src/NotificationPacket.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Boost_Echo_Client.dir/src/NotificationPacket.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Boost_Echo_Client.dir/src/Packet.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Boost_Echo_Client.dir/src/Packet.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Boost_Echo_Client.dir/src/Protocol.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Boost_Echo_Client.dir/src/Protocol.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Boost_Echo_Client.dir/src/StatAckPacket.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Boost_Echo_Client.dir/src/StatAckPacket.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/AckFollowPacket.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/AckFollowPacket.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/AckPacket.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/AckPacket.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/AckUserListPacket.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/AckUserListPacket.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/ConnectionHandler.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/ConnectionHandler.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/EncoderDecoder.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/EncoderDecoder.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/ErrorPacket.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/ErrorPacket.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/KeyboardTask.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/KeyboardTask.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/NotificationPacket.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/NotificationPacket.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/Packet.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/Packet.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/StatAckPacket.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/StatAckPacket.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/makefile" beforeDir="false" afterPath="$PROJECT_DIR$/makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AckFollowPacket.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/AckFollowPacket.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AckUserListPacket.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/AckUserListPacket.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ConnectionHandler.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/ConnectionHandler.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EncoderDecoder.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/EncoderDecoder.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ErrorPacket.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/ErrorPacket.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Boost_Echo_Client.dir/src/echoClient.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Boost_Echo_Client.dir/src/echoClient.cpp.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/KeyboardTask.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/KeyboardTask.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/NotificationPacket.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/NotificationPacket.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Packet.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/Packet.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Protocol.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/Protocol.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/StatAckPacket.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/StatAckPacket.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/echoClient.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/echoClient.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../spl-net/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../spl-net/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../spl-net/src/main/java/bgu/spl/net/impl/BGSServer/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/../spl-net/src/main/java/bgu/spl/net/impl/BGSServer/Database.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../spl-net/src/main/java/bgu/spl/net/impl/BGSServer/Messages/ACK.java" beforeDir="false" afterPath="$PROJECT_DIR$/../spl-net/src/main/java/bgu/spl/net/impl/BGSServer/Messages/ACK.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../spl-net/src/main/java/bgu/spl/net/impl/BGSServer/Messages/NOTIFICATION.java" beforeDir="false" afterPath="$PROJECT_DIR$/../spl-net/src/main/java/bgu/spl/net/impl/BGSServer/Messages/NOTIFICATION.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../spl-net/src/main/java/bgu/spl/net/impl/BGSServer/MyLockException.java" beforeDir="false" afterPath="$PROJECT_DIR$/../spl-net/src/main/java/bgu/spl/net/impl/BGSServer/MyLockException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../spl-net/src/main/java/bgu/spl/net/impl/BGSServer/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/../spl-net/src/main/java/bgu/spl/net/impl/BGSServer/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../spl-net/src/main/java/bgu/spl/net/impl/BGSServer/Users.java" beforeDir="false" afterPath="$PROJECT_DIR$/../spl-net/src/main/java/bgu/spl/net/impl/BGSServer/Users.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spl-net/src/main/java/bgu/spl/net/impl/BGSServer/SmartLocker.java" beforeDir="false" afterPath="$PROJECT_DIR$/../spl-net/src/main/java/bgu/spl/net/impl/BGSServer/SmartLocker.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../spl-net/src/main/java/bgu/spl/net/impl/BGSServer/bgsEncoderDecoder.java" beforeDir="false" afterPath="$PROJECT_DIR$/../spl-net/src/main/java/bgu/spl/net/impl/BGSServer/bgsEncoderDecoder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../spl-net/src/main/java/bgu/spl/net/impl/BGSServer/bgsProtocol.java" beforeDir="false" afterPath="$PROJECT_DIR$/../spl-net/src/main/java/bgu/spl/net/impl/BGSServer/bgsProtocol.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spl-net/src/main/java/bgu/spl/net/impl/echo/EchoClient2.java" beforeDir="false" afterPath="$PROJECT_DIR$/../spl-net/src/main/java/bgu/spl/net/impl/echo/EchoClient2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spl-net/src/main/java/bgu/spl/net/srv/BlockingConnectionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/../spl-net/src/main/java/bgu/spl/net/srv/BlockingConnectionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spl-net/src/main/java/bgu/spl/net/srv/Reactor.java" beforeDir="false" afterPath="$PROJECT_DIR$/../spl-net/src/main/java/bgu/spl/net/srv/Reactor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../spl-net/target/classes/bgu/spl/net/impl/BGSServer/Database.class" beforeDir="false" afterPath="$PROJECT_DIR$/../spl-net/target/classes/bgu/spl/net/impl/BGSServer/Database.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../spl-net/target/classes/bgu/spl/net/impl/BGSServer/Messages/ACK.class" beforeDir="false" afterPath="$PROJECT_DIR$/../spl-net/target/classes/bgu/spl/net/impl/BGSServer/Messages/ACK.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../spl-net/target/classes/bgu/spl/net/impl/BGSServer/Messages/NOTIFICATION.class" beforeDir="false" afterPath="$PROJECT_DIR$/../spl-net/target/classes/bgu/spl/net/impl/BGSServer/Messages/NOTIFICATION.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spl-net/target/classes/bgu/spl/net/impl/BGSServer/Message.class" beforeDir="false" afterPath="$PROJECT_DIR$/../spl-net/target/classes/bgu/spl/net/impl/BGSServer/Message.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../spl-net/target/classes/bgu/spl/net/impl/BGSServer/MyLockException.class" beforeDir="false" afterPath="$PROJECT_DIR$/../spl-net/target/classes/bgu/spl/net/impl/BGSServer/MyLockException.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../spl-net/target/classes/bgu/spl/net/impl/BGSServer/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/../spl-net/target/classes/bgu/spl/net/impl/BGSServer/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../spl-net/target/classes/bgu/spl/net/impl/BGSServer/Users.class" beforeDir="false" afterPath="$PROJECT_DIR$/../spl-net/target/classes/bgu/spl/net/impl/BGSServer/Users.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spl-net/target/classes/bgu/spl/net/impl/BGSServer/SmartLocker.class" beforeDir="false" afterPath="$PROJECT_DIR$/../spl-net/target/classes/bgu/spl/net/impl/BGSServer/SmartLocker.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spl-net/target/classes/bgu/spl/net/impl/BGSServer/TPCMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/../spl-net/target/classes/bgu/spl/net/impl/BGSServer/TPCMain.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../spl-net/target/classes/bgu/spl/net/impl/BGSServer/bgsEncoderDecoder.class" beforeDir="false" afterPath="$PROJECT_DIR$/../spl-net/target/classes/bgu/spl/net/impl/BGSServer/bgsEncoderDecoder.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../spl-net/target/classes/bgu/spl/net/impl/BGSServer/bgsProtocol.class" beforeDir="false" afterPath="$PROJECT_DIR$/../spl-net/target/classes/bgu/spl/net/impl/BGSServer/bgsProtocol.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spl-net/target/classes/bgu/spl/net/srv/BlockingConnectionHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/../spl-net/target/classes/bgu/spl/net/srv/BlockingConnectionHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spl-net/target/classes/bgu/spl/net/srv/Reactor.class" beforeDir="false" afterPath="$PROJECT_DIR$/../spl-net/target/classes/bgu/spl/net/srv/Reactor.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -82,11 +46,11 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ConnectionHandler.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="182">
-              <caret line="141" column="33" lean-forward="true" selection-start-line="141" selection-start-column="33" selection-end-line="141" selection-end-column="33" />
+            <state relative-caret-position="110">
+              <caret line="80" column="31" selection-start-line="80" selection-start-column="24" selection-end-line="80" selection-end-column="31" />
               <folding>
                 <element signature="e#0#30#0" expanded="true" />
               </folding>
@@ -148,11 +112,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/KeyboardTask.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="540">
-              <caret line="36" column="43" selection-start-line="36" selection-start-column="43" selection-end-line="36" selection-end-column="43" />
+            <state relative-caret-position="110">
+              <caret line="27" column="81" selection-start-line="27" selection-start-column="81" selection-end-line="27" selection-end-column="81" />
             </state>
           </provider>
         </entry>
@@ -161,8 +125,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>findthezero</find>
-      <find>vectortostring</find>
       <find>start</find>
       <find>USERLIST</find>
       <find>GETBYTES</find>
@@ -191,6 +153,8 @@
       <find>NOTIFICATION</find>
       <find>cout</find>
       <find>lENGTH</find>
+      <find>getline</find>
+      <find>boost</find>
     </findStrings>
     <replaceStrings>
       <replace>(*msg)</replace>
@@ -244,9 +208,9 @@
   </component>
   <component name="OCFindUsagesOptions" text="true" ivars="false" properties="true" derivedClasses="false" />
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="271" />
-    <option name="y" value="68" />
-    <option name="width" value="599" />
+    <option name="x" value="67" />
+    <option name="y" value="25" />
+    <option name="width" value="589" />
     <option name="height" value="637" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -305,7 +269,7 @@
     </option>
   </component>
   <component name="RunManager">
-    <configuration name="Boost_Echo_Client" type="CMakeRunConfiguration" factoryName="Application" singleton="false" PROGRAM_PARAMS="&quot;127.0.0.1&quot; 7777" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Boost_Echo_Client" TARGET_NAME="Boost_Echo_Client" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Boost_Echo_Client" RUN_TARGET_NAME="Boost_Echo_Client">
+    <configuration name="Boost_Echo_Client" type="CMakeRunConfiguration" factoryName="Application" singleton="false" PROGRAM_PARAMS="&quot;127.0.0.1&quot; 8888" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Boost_Echo_Client" TARGET_NAME="Boost_Echo_Client" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Boost_Echo_Client" RUN_TARGET_NAME="Boost_Echo_Client">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -326,12 +290,12 @@
       <workItem from="1546359280666" duration="31796000" />
       <workItem from="1546399241279" duration="17117000" />
       <workItem from="1546449357177" duration="48070000" />
-      <workItem from="1546627923497" duration="2136000" />
+      <workItem from="1546627923497" duration="6675000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="171232000" />
+    <option name="totallyTimeSpent" value="175771000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -344,15 +308,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1299" height="743" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.3008779" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.3008779" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.39739415" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.5358306" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32736155" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.5358306" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32899022" />
@@ -361,7 +324,7 @@
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="10" />
       <window_info anchor="bottom" id="CMake" order="11" weight="0.32736155" />
-      <window_info anchor="bottom" id="Messages" order="12" weight="0.31270358" />
+      <window_info anchor="bottom" id="Messages" order="12" weight="0.37785017" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -781,8 +744,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ConnectionHandler.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="141" column="33" lean-forward="true" selection-start-line="141" selection-start-column="33" selection-end-line="141" selection-end-column="33" />
+        <state relative-caret-position="110">
+          <caret line="80" column="31" selection-start-line="80" selection-start-column="24" selection-end-line="80" selection-end-column="31" />
           <folding>
             <element signature="e#0#30#0" expanded="true" />
           </folding>
@@ -835,8 +798,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/KeyboardTask.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="36" column="43" selection-start-line="36" selection-start-column="43" selection-end-line="36" selection-end-column="43" />
+        <state relative-caret-position="110">
+          <caret line="27" column="81" selection-start-line="27" selection-start-column="81" selection-end-line="27" selection-end-column="81" />
         </state>
       </provider>
     </entry>
