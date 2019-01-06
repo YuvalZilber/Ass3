@@ -139,8 +139,14 @@ Packet *ConnectionHandler::DecodeNotification() {
     std::string postingUser(postingBytes.begin(), postingBytes.end());
 
     vector<char> contentBytes = vector<char>();
-    for (int j = 3 + 1 + (int)postingUser.length(); (*msg)[j] != '\0'; ++j) {
-        contentBytes.push_back((*msg)[j]);
+    int j = 3 + 1 + (int) postingUser.length();
+    if((*msg).size()<=j) return nullptr;
+    char k=(*msg)[j]?(*msg)[j]:'\0';
+    for (; k != '\0'; ++j) {
+        if((*msg).size()<=j) k='\0';
+        else k=(*msg)[j]?(*msg)[j]:'\0';
+
+        contentBytes.push_back(k);
     }
     std::string content(contentBytes.begin(), contentBytes.end());
 
@@ -154,7 +160,7 @@ Packet *ConnectionHandler::decodeNextMessage() {//translating bytes into packet 
     char *opcode = new char[2];
     getBytes(opcode, 2);
     pushToVec(*msg, opcode, 2);
-
+    Packet *packet = nullptr;
     switch (bytesToShort(opcode)) {
 
         // default: {
@@ -164,27 +170,34 @@ Packet *ConnectionHandler::decodeNextMessage() {//translating bytes into packet 
             pushToMsg(1);
             pushToMsg(-2);
 
-            return DecodeNotification();
+            packet = DecodeNotification();
+            break;
         case 10:
             pushToMsg(2);
-            return DecodeAck();
+            packet = DecodeAck();
+            break;
         case 11: {
             pushToMsg(2);
             char *arr = new char[2];
             arr[0] = (*msg)[2];
             arr[1] = (*msg)[3];
             ErrorPacket *errorPacket = new ErrorPacket(bytesToShort(arr));
-            return errorPacket;
+            packet = errorPacket;
+            delete[] arr;
+            break;
         }
 
             //  }
     }
-    return nullptr;
+    delete[] opcode;
+    delete msg;
+    return packet;
 }
 
 
 Packet *ConnectionHandler::DecodeAck() {
     char *msgopcode = new char[2];
+
     msgopcode[0] = (*msg)[2];
     msgopcode[1] = (*msg)[3];
     short msgOpcode = bytesToShort(msgopcode);
@@ -193,9 +206,9 @@ Packet *ConnectionHandler::DecodeAck() {
             char *numusers = new char[2];
             getBytes(numusers, 2);
             short numOfUsers = bytesToShort(numusers);
-            string userNameList = "";
+            string userNameList;
             char *tmp = new char[1];
-            for (int i = 0; i < (int)numOfUsers;) {
+            for (int i = 0; i < (int) numOfUsers;) {
                 getBytes(tmp, 1);
                 if ((tmp[0] == 0) & (i + 1 == numOfUsers))
                     break;
@@ -207,6 +220,9 @@ Packet *ConnectionHandler::DecodeAck() {
             }
             AckFollowPacket *ackFollowPacket = new AckFollowPacket(numOfUsers, userNameList);
             ackFollowPacket->SetMsgOpcode(4);
+            delete[] numusers;
+            delete[] msgopcode;
+            delete[] tmp;
             return ackFollowPacket;
         }
         case 7: {
@@ -215,7 +231,7 @@ Packet *ConnectionHandler::DecodeAck() {
             short numOfUsers = bytesToShort(numusers);
             std::string userNameList = "";
             char *tmp = new char[1];
-            for (int i = 0; i < (int)numOfUsers;) {
+            for (int i = 0; i < (int) numOfUsers;) {
                 getBytes(tmp, 1);
                 if ((tmp[0] == 0) & (i + 1 == numOfUsers))
                     break;
@@ -227,6 +243,9 @@ Packet *ConnectionHandler::DecodeAck() {
             }
             AckUserListPacket *listPacket = new AckUserListPacket(numOfUsers, userNameList);
             listPacket->SetMsgOpcode(7);
+            delete[] msgopcode;
+            delete[] numusers;
+            delete[] tmp;
             return listPacket;
         }
 
@@ -243,10 +262,15 @@ Packet *ConnectionHandler::DecodeAck() {
 
             StatAckPacket *statAckPacket = new StatAckPacket(postNumber, follownumber, followingnumber);
             statAckPacket->SetMsgOpcode(8);
+            delete[] msgopcode;
+            delete[] postsNum;
+            delete[] follownum;
+            delete[] followingnum;
             return statAckPacket;
         }
         default: {
             AckPacket *ackPacket = new AckPacket(msgOpcode);
+            delete[] msgopcode;
             return ackPacket;
         }
     }
@@ -254,14 +278,14 @@ Packet *ConnectionHandler::DecodeAck() {
 }
 
 bool ConnectionHandler::sendPacket(Packet &packet) {
-    char *toSend = encDec.encode(packet);//converting packet to bytes
-    int length = packet.getSize();
-//    for (int i = 0; i < length; ++i) {
-//        std::cout << (int) toSend[i] << ", ";
-//    }
-//    std::cout << endl;
-    bool isDone = sendBytes(toSend, length);
-    return isDone;
+    if(packet.GetOpcode()) {
+        char *toSend = encDec.encode(packet);//converting packet to bytes
+        int length = packet.getSize();
+        bool isDone = sendBytes(toSend, length);
+        delete[] toSend;
+        return isDone;
+    }
+    return true;
 }
 
 void ConnectionHandler::ApproveDisconnect() {
@@ -273,13 +297,14 @@ bool ConnectionHandler::IsDisconnectApproved() {
 }
 
 void ConnectionHandler::pushToMsg(int len) {
+    char *bytes = nullptr;
     if (len > 0) {
-        char *bytes = new char[len];
+        bytes = new char[len];
         this->getBytes(bytes, (unsigned) len);
         pushToVec(*msg, bytes, len);
     }
     while (len < 0) {
-        char *bytes = new char[1];
+        bytes = new char[1];
         this->getBytes(bytes, 1);
         char byte = bytes[0];
         if (byte == 0) {
@@ -289,5 +314,5 @@ void ConnectionHandler::pushToMsg(int len) {
         } else
             (*msg).push_back(byte);
     }
-
+    delete[] bytes;
 }

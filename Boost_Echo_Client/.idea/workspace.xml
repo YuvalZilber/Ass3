@@ -13,28 +13,26 @@
   <component name="ChangeListManager">
     <list default="true" id="5ddcae75-204b-4b32-815f-a89affbe1d58" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/KeyboardTask.o" beforeDir="false" afterPath="$PROJECT_DIR$/bin/KeyboardTask.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/runme" beforeDir="false" afterPath="$PROJECT_DIR$/bin/runme" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Boost_Echo_Client" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Boost_Echo_Client" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Boost_Echo_Client.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Boost_Echo_Client.dir/CXX.includecache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Boost_Echo_Client.dir/src/Client.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Boost_Echo_Client.dir/src/Client.cpp.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Boost_Echo_Client.dir/src/ConnectionHandler.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Boost_Echo_Client.dir/src/ConnectionHandler.cpp.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Boost_Echo_Client.dir/src/KeyboardTask.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Boost_Echo_Client.dir/src/KeyboardTask.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Boost_Echo_Client.dir/src/echoClient.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Boost_Echo_Client.dir/src/echoClient.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/KeyboardTask.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/KeyboardTask.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Client.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ConnectionHandler.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/ConnectionHandler.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EncoderDecoder.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/EncoderDecoder.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/KeyboardTask.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/KeyboardTask.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Protocol.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/Protocol.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../spl-net/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../spl-net/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../spl-net/src/main/java/bgu/spl/net/impl/BGSServer/SmartLocker.java" beforeDir="false" afterPath="$PROJECT_DIR$/../spl-net/src/main/java/bgu/spl/net/impl/BGSServer/SmartLocker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../spl-net/src/main/java/bgu/spl/net/impl/BGSServer/bgsEncoderDecoder.java" beforeDir="false" afterPath="$PROJECT_DIR$/../spl-net/src/main/java/bgu/spl/net/impl/BGSServer/bgsEncoderDecoder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../spl-net/src/main/java/bgu/spl/net/impl/BGSServer/bgsProtocol.java" beforeDir="false" afterPath="$PROJECT_DIR$/../spl-net/src/main/java/bgu/spl/net/impl/BGSServer/bgsProtocol.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../spl-net/src/main/java/bgu/spl/net/impl/echo/EchoClient2.java" beforeDir="false" afterPath="$PROJECT_DIR$/../spl-net/src/main/java/bgu/spl/net/impl/echo/EchoClient2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spl-net/src/main/java/bgu/spl/net/impl/BGSServer/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/../spl-net/src/main/java/bgu/spl/net/impl/BGSServer/Database.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spl-net/src/main/java/bgu/spl/net/impl/BGSServer/TPCMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/../spl-net/src/main/java/bgu/spl/net/impl/BGSServer/TPCMain.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../spl-net/src/main/java/bgu/spl/net/srv/BlockingConnectionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/../spl-net/src/main/java/bgu/spl/net/srv/BlockingConnectionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../spl-net/src/main/java/bgu/spl/net/srv/Reactor.java" beforeDir="false" afterPath="$PROJECT_DIR$/../spl-net/src/main/java/bgu/spl/net/srv/Reactor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../spl-net/target/classes/bgu/spl/net/impl/BGSServer/Database.class" beforeDir="false" afterPath="$PROJECT_DIR$/../spl-net/target/classes/bgu/spl/net/impl/BGSServer/Database.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../spl-net/target/classes/bgu/spl/net/impl/BGSServer/Message.class" beforeDir="false" afterPath="$PROJECT_DIR$/../spl-net/target/classes/bgu/spl/net/impl/BGSServer/Message.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../spl-net/target/classes/bgu/spl/net/impl/BGSServer/MyLockException.class" beforeDir="false" afterPath="$PROJECT_DIR$/../spl-net/target/classes/bgu/spl/net/impl/BGSServer/MyLockException.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../spl-net/target/classes/bgu/spl/net/impl/BGSServer/SmartLocker.class" beforeDir="false" afterPath="$PROJECT_DIR$/../spl-net/target/classes/bgu/spl/net/impl/BGSServer/SmartLocker.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../spl-net/target/classes/bgu/spl/net/impl/BGSServer/TPCMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/../spl-net/target/classes/bgu/spl/net/impl/BGSServer/TPCMain.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../spl-net/target/classes/bgu/spl/net/impl/BGSServer/bgsEncoderDecoder.class" beforeDir="false" afterPath="$PROJECT_DIR$/../spl-net/target/classes/bgu/spl/net/impl/BGSServer/bgsEncoderDecoder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../spl-net/target/classes/bgu/spl/net/impl/BGSServer/bgsProtocol.class" beforeDir="false" afterPath="$PROJECT_DIR$/../spl-net/target/classes/bgu/spl/net/impl/BGSServer/bgsProtocol.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../spl-net/target/classes/bgu/spl/net/srv/BlockingConnectionHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/../spl-net/target/classes/bgu/spl/net/srv/BlockingConnectionHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../spl-net/target/classes/bgu/spl/net/srv/Reactor.class" beforeDir="false" afterPath="$PROJECT_DIR$/../spl-net/target/classes/bgu/spl/net/srv/Reactor.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -49,8 +47,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ConnectionHandler.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="110">
-              <caret line="80" column="31" selection-start-line="80" selection-start-column="24" selection-end-line="80" selection-end-column="31" />
+            <state relative-caret-position="67">
+              <caret line="283" selection-start-line="283" selection-end-line="283" />
               <folding>
                 <element signature="e#0#30#0" expanded="true" />
               </folding>
@@ -59,19 +57,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Packet.cpp">
+        <entry file="file://$PROJECT_DIR$/include/Packet.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="570">
-              <caret line="38" column="57" selection-start-line="38" selection-start-column="57" selection-end-line="38" selection-end-column="57" />
+            <state relative-caret-position="146">
+              <caret line="21" selection-start-line="21" selection-end-line="21" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/NotificationPacket.cpp">
+        <entry file="file://$PROJECT_DIR$/src/EncoderDecoder.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="21" selection-start-line="21" selection-end-line="21" />
+            <state relative-caret-position="300">
+              <caret line="73" column="24" selection-start-line="73" selection-start-column="24" selection-end-line="73" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -79,8 +77,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Client.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="525">
-              <caret line="35" selection-start-line="35" selection-end-line="35" />
+            <state relative-caret-position="106">
+              <caret line="31" column="18" selection-start-line="31" selection-start-column="18" selection-end-line="31" selection-end-column="18" />
               <folding>
                 <element signature="e#41#60#0" expanded="true" />
               </folding>
@@ -89,10 +87,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Packet.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-150">
+              <caret line="11" column="47" selection-start-line="11" selection-start-column="47" selection-end-line="11" selection-end-column="47" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Protocol.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1515">
-              <caret line="101" selection-start-line="101" selection-end-line="101" />
+            <state relative-caret-position="196">
+              <caret line="58" lean-forward="true" selection-start-line="58" selection-end-line="58" />
               <folding>
                 <element signature="e#41#62#0" expanded="true" />
               </folding>
@@ -101,13 +108,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/include/ConnectionHandler.h">
+        <entry file="file:///usr/include/boost/asio/detail/impl/socket_ops.ipp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="990">
-              <caret line="66" column="19" selection-start-line="66" selection-start-column="19" selection-end-line="66" selection-end-column="19" />
-              <folding>
-                <element signature="e#58#85#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="128">
+              <caret line="1169" selection-start-line="1169" selection-end-line="1169" />
             </state>
           </provider>
         </entry>
@@ -115,8 +119,20 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/KeyboardTask.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="110">
-              <caret line="27" column="81" selection-start-line="27" selection-start-column="81" selection-end-line="27" selection-end-column="81" />
+            <state relative-caret-position="105">
+              <caret line="37" column="9" lean-forward="true" selection-start-line="37" selection-start-column="9" selection-end-line="37" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/include/ConnectionHandler.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="150">
+              <caret line="21" column="17" lean-forward="true" selection-start-line="21" selection-start-column="17" selection-end-line="21" selection-end-column="17" />
+              <folding>
+                <element signature="e#58#85#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -125,16 +141,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>start</find>
-      <find>USERLIST</find>
-      <find>GETBYTES</find>
-      <find>DecodeAck</find>
-      <find>tmp</find>
-      <find>FOLLO</find>
-      <find>process(</find>
-      <find>ENCODE(</find>
-      <find>DECODEA</find>
-      <find>AckFollowPacket</find>
       <find>sendPacket(</find>
       <find>-o</find>
       <find>/</find>
@@ -151,10 +157,20 @@
       <find>int size</find>
       <find>int len</find>
       <find>NOTIFICATION</find>
-      <find>cout</find>
       <find>lENGTH</find>
       <find>getline</find>
       <find>boost</find>
+      <find>cout</find>
+      <find>LOGOUT</find>
+      <find>decodeNextMessage</find>
+      <find>new</find>
+      <find>Error</find>
+      <find>BOOST</find>
+      <find>encode</find>
+      <find>split</find>
+      <find>dynamic</find>
+      <find>del</find>
+      <find>DecodeAck</find>
     </findStrings>
     <replaceStrings>
       <replace>(*msg)</replace>
@@ -179,7 +195,6 @@
         <option value="$PROJECT_DIR$/src/KeyboardTask.h" />
         <option value="$PROJECT_DIR$/include/Protocol.h" />
         <option value="$PROJECT_DIR$/src/AckPacket.cpp" />
-        <option value="$PROJECT_DIR$/src/Client.cpp" />
         <option value="$PROJECT_DIR$/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/makefile" />
         <option value="$PROJECT_DIR$/include/Packet.h" />
@@ -189,20 +204,21 @@
         <option value="$PROJECT_DIR$/include/AckPacket.h" />
         <option value="$PROJECT_DIR$/include/ConnectionHandler.h" />
         <option value="$PROJECT_DIR$/include/EncoderDecoder.h" />
-        <option value="$PROJECT_DIR$/src/EncoderDecoder.cpp" />
-        <option value="$PROJECT_DIR$/src/Packet.cpp" />
         <option value="$PROJECT_DIR$/include/NotificationPacket.h" />
         <option value="$PROJECT_DIR$/src/AckFollowPacket.cpp" />
         <option value="$PROJECT_DIR$/src/ErrorPacket.cpp" />
         <option value="$PROJECT_DIR$/src/AckUserListPacket.cpp" />
         <option value="$PROJECT_DIR$/include/AckUserListPacket.h" />
-        <option value="$PROJECT_DIR$/include/KeyboardTask.h" />
         <option value="$PROJECT_DIR$/src/StatAckPacket.cpp" />
-        <option value="$PROJECT_DIR$/src/Protocol.cpp" />
         <option value="$PROJECT_DIR$/src/NotificationPacket.cpp" />
         <option value="$PROJECT_DIR$/src/echoClient.cpp" />
-        <option value="$PROJECT_DIR$/src/ConnectionHandler.cpp" />
+        <option value="$PROJECT_DIR$/src/Packet.cpp" />
+        <option value="$PROJECT_DIR$/include/KeyboardTask.h" />
+        <option value="$PROJECT_DIR$/src/EncoderDecoder.cpp" />
         <option value="$PROJECT_DIR$/src/KeyboardTask.cpp" />
+        <option value="$PROJECT_DIR$/src/Protocol.cpp" />
+        <option value="$PROJECT_DIR$/src/ConnectionHandler.cpp" />
+        <option value="$PROJECT_DIR$/src/Client.cpp" />
       </list>
     </option>
   </component>
@@ -219,6 +235,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -229,23 +246,17 @@
             <path>
               <item name="Boost_Echo_Client" type="b2602c69:ProjectViewProjectNode" />
               <item name="Boost_Echo_Client" type="462c0819:PsiDirectoryNode" />
-              <item name="include" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Boost_Echo_Client" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Boost_Echo_Client" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../ClientpPROJECT3-20190102T184130Z-001/ClientpPROJECT3/Boost_Echo_Client/CMakeLists.txt" />
+    <property name="last_opened_file_path" value="$USER_HOME$/sapir/assignment3/CMakeLists.txt" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -269,7 +280,7 @@
     </option>
   </component>
   <component name="RunManager">
-    <configuration name="Boost_Echo_Client" type="CMakeRunConfiguration" factoryName="Application" singleton="false" PROGRAM_PARAMS="&quot;127.0.0.1&quot; 8888" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Boost_Echo_Client" TARGET_NAME="Boost_Echo_Client" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Boost_Echo_Client" RUN_TARGET_NAME="Boost_Echo_Client">
+    <configuration name="Boost_Echo_Client" type="CMakeRunConfiguration" factoryName="Application" singleton="false" PROGRAM_PARAMS="&quot;127.0.0.1&quot; 7777" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Boost_Echo_Client" TARGET_NAME="Boost_Echo_Client" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Boost_Echo_Client" RUN_TARGET_NAME="Boost_Echo_Client">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -291,11 +302,12 @@
       <workItem from="1546399241279" duration="17117000" />
       <workItem from="1546449357177" duration="48070000" />
       <workItem from="1546627923497" duration="6675000" />
+      <workItem from="1546716781361" duration="14318000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="175771000" />
+    <option name="totallyTimeSpent" value="190089000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -308,8 +320,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1299" height="743" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.3008779" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.3056664" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -339,12 +352,12 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/src/ConnectionHandler.cpp</url>
-          <line>233</line>
+          <line>252</line>
           <option name="timeStamp" value="20" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/src/ConnectionHandler.cpp</url>
-          <line>163</line>
+          <line>169</line>
           <option name="timeStamp" value="28" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
@@ -354,8 +367,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/src/EncoderDecoder.cpp</url>
-          <line>124</line>
+          <line>125</line>
           <option name="timeStamp" value="35" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/src/ConnectionHandler.cpp</url>
+          <line>283</line>
+          <option name="timeStamp" value="37" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -440,23 +458,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file:///usr/include/boost/system/error_code.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="111">
-          <caret line="205" selection-start-line="205" selection-end-line="205" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/include/boost/xpressive/detail/core/linker.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="325" lean-forward="true" selection-start-line="325" selection-end-line="325" />
-          <folding>
-            <element signature="e#2618#2638#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///usr/lib/gcc/x86_64-linux-gnu/7/include-fixed/syslimits.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="224">
@@ -642,20 +643,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/EncoderDecoder.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="112" column="33" selection-start-line="112" selection-start-column="33" selection-end-line="112" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/Packet.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="17" column="7" selection-start-line="17" selection-start-column="7" selection-end-line="17" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/include/NotificationPacket.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
@@ -708,16 +695,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/include/KeyboardTask.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="14" column="12" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
-          <folding>
-            <element signature="e#125#155#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/StatAckPacket.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="29">
@@ -742,23 +719,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ConnectionHandler.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="80" column="31" selection-start-line="80" selection-start-column="24" selection-end-line="80" selection-end-column="31" />
-          <folding>
-            <element signature="e#0#30#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Packet.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
-          <caret line="38" column="57" selection-start-line="38" selection-start-column="57" selection-end-line="38" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/NotificationPacket.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
@@ -766,40 +726,95 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Client.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="35" selection-start-line="35" selection-end-line="35" />
-          <folding>
-            <element signature="e#41#60#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Protocol.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1515">
-          <caret line="101" selection-start-line="101" selection-end-line="101" />
-          <folding>
-            <element signature="e#41#62#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/include/ConnectionHandler.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="990">
-          <caret line="66" column="19" selection-start-line="66" selection-start-column="19" selection-end-line="66" selection-end-column="19" />
+        <state relative-caret-position="150">
+          <caret line="21" column="17" lean-forward="true" selection-start-line="21" selection-start-column="17" selection-end-line="21" selection-end-column="17" />
           <folding>
             <element signature="e#58#85#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/include/Packet.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="146">
+          <caret line="21" selection-start-line="21" selection-end-line="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Packet.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-150">
+          <caret line="11" column="47" selection-start-line="11" selection-start-column="47" selection-end-line="11" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/include/boost/asio/detail/impl/socket_ops.ipp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="128">
+          <caret line="1169" selection-start-line="1169" selection-end-line="1169" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/KeyboardTask.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="15" column="40" selection-start-line="15" selection-start-column="23" selection-end-line="15" selection-end-column="40" />
+          <folding>
+            <element signature="e#125#155#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Protocol.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="58" lean-forward="true" selection-start-line="58" selection-end-line="58" />
+          <folding>
+            <element signature="e#41#62#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/EncoderDecoder.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="73" column="24" selection-start-line="73" selection-start-column="24" selection-end-line="73" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ConnectionHandler.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="67">
+          <caret line="283" selection-start-line="283" selection-end-line="283" />
+          <folding>
+            <element signature="e#0#30#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Client.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="106">
+          <caret line="31" column="18" selection-start-line="31" selection-start-column="18" selection-end-line="31" selection-end-column="18" />
+          <folding>
+            <element signature="e#41#60#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/include/c++/7/thread">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="245">
+          <caret line="117" column="6" selection-start-line="117" selection-start-column="6" selection-end-line="117" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/KeyboardTask.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="27" column="81" selection-start-line="27" selection-start-column="81" selection-end-line="27" selection-end-column="81" />
+        <state relative-caret-position="105">
+          <caret line="37" column="9" lean-forward="true" selection-start-line="37" selection-start-column="9" selection-end-line="37" selection-end-column="9" />
         </state>
       </provider>
     </entry>

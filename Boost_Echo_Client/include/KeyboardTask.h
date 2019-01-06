@@ -18,6 +18,7 @@ public:
     KeyboardTask(ConnectionHandler *conHand,Protocol* aProtocol);
     std:: vector<std::string> split(std::string s,std:: string delimiter);
     void operator()();
+    virtual ~KeyboardTask();
 };
 
 

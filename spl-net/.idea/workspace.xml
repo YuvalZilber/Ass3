@@ -3,29 +3,23 @@
   <component name="ChangeListManager">
     <list default="true" id="5bb1b896-b17a-4fac-8fc7-3bbcc2000f5d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../Boost_Echo_Client/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Boost_Echo_Client/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Boost_Echo_Client/bin/KeyboardTask.o" beforeDir="false" afterPath="$PROJECT_DIR$/../Boost_Echo_Client/bin/KeyboardTask.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Boost_Echo_Client/bin/runme" beforeDir="false" afterPath="$PROJECT_DIR$/../Boost_Echo_Client/bin/runme" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Boost_Echo_Client/cmake-build-debug/Boost_Echo_Client" beforeDir="false" afterPath="$PROJECT_DIR$/../Boost_Echo_Client/cmake-build-debug/Boost_Echo_Client" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Boost_Echo_Client/cmake-build-debug/CMakeFiles/Boost_Echo_Client.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/../Boost_Echo_Client/cmake-build-debug/CMakeFiles/Boost_Echo_Client.dir/CXX.includecache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Boost_Echo_Client/cmake-build-debug/CMakeFiles/Boost_Echo_Client.dir/src/Client.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/../Boost_Echo_Client/cmake-build-debug/CMakeFiles/Boost_Echo_Client.dir/src/Client.cpp.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Boost_Echo_Client/cmake-build-debug/CMakeFiles/Boost_Echo_Client.dir/src/ConnectionHandler.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/../Boost_Echo_Client/cmake-build-debug/CMakeFiles/Boost_Echo_Client.dir/src/ConnectionHandler.cpp.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Boost_Echo_Client/cmake-build-debug/CMakeFiles/Boost_Echo_Client.dir/src/KeyboardTask.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/../Boost_Echo_Client/cmake-build-debug/CMakeFiles/Boost_Echo_Client.dir/src/KeyboardTask.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Boost_Echo_Client/cmake-build-debug/CMakeFiles/Boost_Echo_Client.dir/src/echoClient.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/../Boost_Echo_Client/cmake-build-debug/CMakeFiles/Boost_Echo_Client.dir/src/echoClient.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Boost_Echo_Client/src/Client.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../Boost_Echo_Client/src/Client.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Boost_Echo_Client/src/ConnectionHandler.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../Boost_Echo_Client/src/ConnectionHandler.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Boost_Echo_Client/src/KeyboardTask.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../Boost_Echo_Client/src/KeyboardTask.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/bgu/spl/net/impl/BGSServer/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bgu/spl/net/impl/BGSServer/Database.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bgu/spl/net/impl/BGSServer/SmartLocker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bgu/spl/net/impl/BGSServer/SmartLocker.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/bgu/spl/net/impl/BGSServer/TPCMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bgu/spl/net/impl/BGSServer/TPCMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bgu/spl/net/impl/BGSServer/bgsEncoderDecoder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bgu/spl/net/impl/BGSServer/bgsEncoderDecoder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bgu/spl/net/impl/BGSServer/bgsProtocol.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bgu/spl/net/impl/BGSServer/bgsProtocol.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bgu/spl/net/impl/echo/EchoClient2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bgu/spl/net/impl/echo/EchoClient2.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/bgu/spl/net/srv/BlockingConnectionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bgu/spl/net/srv/BlockingConnectionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bgu/spl/net/srv/Reactor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bgu/spl/net/srv/Reactor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/bgu/spl/net/impl/BGSServer/Database.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bgu/spl/net/impl/BGSServer/Database.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/bgu/spl/net/impl/BGSServer/Message.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bgu/spl/net/impl/BGSServer/Message.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/bgu/spl/net/impl/BGSServer/MyLockException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bgu/spl/net/impl/BGSServer/MyLockException.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/bgu/spl/net/impl/BGSServer/SmartLocker.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bgu/spl/net/impl/BGSServer/SmartLocker.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/bgu/spl/net/impl/BGSServer/TPCMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bgu/spl/net/impl/BGSServer/TPCMain.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/bgu/spl/net/impl/BGSServer/bgsEncoderDecoder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bgu/spl/net/impl/BGSServer/bgsEncoderDecoder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/bgu/spl/net/impl/BGSServer/bgsProtocol.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bgu/spl/net/impl/BGSServer/bgsProtocol.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/bgu/spl/net/srv/BlockingConnectionHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bgu/spl/net/srv/BlockingConnectionHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/bgu/spl/net/srv/Reactor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bgu/spl/net/srv/Reactor.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -59,90 +53,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/bgu/spl/net/impl/BGSServer/Database.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="129">
-              <caret line="106" column="44" lean-forward="true" selection-start-line="106" selection-start-column="44" selection-end-line="106" selection-end-column="44" />
+            <state relative-caret-position="320">
+              <caret line="16" column="8" selection-start-line="16" selection-start-column="8" selection-end-line="16" selection-end-column="8" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#684#685#0" expanded="true" />
                 <element signature="e#740#741#0" expanded="true" />
+                <element signature="e#5251#5252#0" expanded="true" />
                 <element signature="e#5292#5293#0" expanded="true" />
+                <element signature="e#6906#6907#0" expanded="true" />
                 <element signature="e#6944#6945#0" expanded="true" />
+                <element signature="e#6985#6986#0" expanded="true" />
                 <element signature="e#7023#7024#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/bgu/spl/net/impl/BGSServer/TPCMain.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="100">
-              <caret line="8" column="37" selection-start-line="8" selection-start-column="37" selection-end-line="8" selection-end-column="37" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/bgu/spl/net/impl/BGSServer/ReactorMain.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="80">
-              <caret line="7" column="29" lean-forward="true" selection-start-line="7" selection-start-column="29" selection-end-line="7" selection-end-column="29" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/bgu/spl/net/srv/Reactor.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="19">
-              <caret line="109" lean-forward="true" selection-start-line="109" selection-end-line="109" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/bgu/spl/net/srv/BaseServer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="94">
-              <caret line="49" column="140" lean-forward="true" selection-start-line="49" selection-start-column="16" selection-end-line="49" selection-end-column="140" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/bgu/spl/net/impl/BGSServer/SmartLocker.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="109">
-              <caret line="34" selection-start-line="34" selection-end-line="34" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#2331#2332#0" expanded="true" />
-                <element signature="e#2365#2366#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/bgu/spl/net/impl/BGSServer/bgsEncoderDecoder.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-143">
-              <caret line="80" selection-start-line="80" selection-end-line="80" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#field2length#0;class#bgsEncoderDecoder#0" />
-                <element signature="method#bytes2values#0;class#bgsEncoderDecoder#0" />
-                <element signature="method#bytes2value#0;class#bgsEncoderDecoder#0" />
-                <element signature="method#concat#0;class#bgsEncoderDecoder#0" />
               </folding>
             </state>
           </provider>
@@ -160,6 +85,45 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/bgu/spl/net/srv/BlockingConnectionHandler.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="59">
+              <caret line="39" column="13" lean-forward="true" selection-start-line="39" selection-start-column="13" selection-end-line="39" selection-end-column="13" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#2135#2136#0" expanded="true" />
+                <element signature="e#2192#2193#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/bgu/spl/net/impl/ConnectionsImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1260">
+              <caret line="88" column="9" lean-forward="true" selection-start-line="83" selection-start-column="8" selection-end-line="88" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/bgu/spl/net/srv/NonBlockingConnectionHandler.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="140">
+              <caret line="81" column="18" lean-forward="true" selection-start-line="81" selection-start-column="18" selection-end-line="81" selection-end-column="18" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#3552#3553#0" expanded="true" />
+                <element signature="e#3589#3590#0" expanded="true" />
+                <element signature="e#3919#3920#0" expanded="true" />
+                <element signature="e#3950#3951#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -171,8 +135,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>OP_</find>
-      <find>isVali</find>
       <find>isVa</find>
       <find>key</find>
       <find>selectorTasks</find>
@@ -201,6 +163,8 @@
       <find>PM(</find>
       <find>POST(</find>
       <find>connecte</find>
+      <find>red:</find>
+      <find>CONNECTED</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -280,13 +244,13 @@
         <option value="$PROJECT_DIR$/src/main/java/bgu/spl/net/impl/BGSServer/bgsProtocol.java" />
         <option value="$PROJECT_DIR$/src/main/java/bgu/spl/net/impl/BGSServer/SmartLocker.java" />
         <option value="$PROJECT_DIR$/src/main/java/bgu/spl/net/impl/echo/EchoClient2.java" />
-        <option value="$PROJECT_DIR$/src/main/java/bgu/spl/net/srv/BlockingConnectionHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/bgu/spl/net/srv/BaseServer.java" />
         <option value="$PROJECT_DIR$/src/main/java/bgu/spl/net/srv/Reactor.java" />
         <option value="$PROJECT_DIR$/src/main/java/bgu/spl/net/impl/BGSServer/User.java" />
-        <option value="$PROJECT_DIR$/src/main/java/bgu/spl/net/impl/BGSServer/TPCMain.java" />
-        <option value="$PROJECT_DIR$/src/main/java/bgu/spl/net/impl/BGSServer/Database.java" />
         <option value="$PROJECT_DIR$/src/main/java/bgu/spl/net/impl/BGSServer/bgsEncoderDecoder.java" />
+        <option value="$PROJECT_DIR$/src/main/java/bgu/spl/net/impl/BGSServer/TPCMain.java" />
+        <option value="$PROJECT_DIR$/src/main/java/bgu/spl/net/srv/BlockingConnectionHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/bgu/spl/net/impl/BGSServer/Database.java" />
       </list>
     </option>
   </component>
@@ -308,7 +272,7 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="263" />
     <option name="y" value="148" />
     <option name="width" value="667" />
@@ -320,8 +284,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -397,12 +359,14 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1546692236665" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1546773288797" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/pom.xml" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -433,7 +397,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.ReactorMain">
+  <component name="RunManager" selected="Application.TPCMain">
     <configuration name="EchoClient" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="bgu.spl.net.impl.echo.EchoClient" />
       <module name="spl-net" />
@@ -501,8 +465,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.ReactorMain" />
         <item itemvalue="Application.TPCMain" />
+        <item itemvalue="Application.ReactorMain" />
         <item itemvalue="Application.EchoClient2" />
         <item itemvalue="Application.EchoClient" />
         <item itemvalue="Application.EchoServerMain" />
@@ -525,6 +489,7 @@
       <workItem from="1546204329763" duration="14368000" />
       <workItem from="1546268255009" duration="101291000" />
       <workItem from="1546628050998" duration="20701000" />
+      <workItem from="1546716899085" duration="16613000" />
     </task>
     <task id="LOCAL-00001" summary="without stupid souts">
       <created>1545696799852</created>
@@ -632,10 +597,10 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="206939000" />
+    <option name="totallyTimeSpent" value="223552000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="67" y="25" width="1299" height="743" extended-state="6" />
+    <frame x="67" y="25" width="1299" height="743" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Designer" order="0" />
@@ -643,7 +608,7 @@
       <window_info id="Capture Tool" order="2" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info id="Image Layers" order="4" />
-      <window_info content_ui="combo" id="Project" order="5" visible="true" weight="0.37430167" />
+      <window_info content_ui="combo" id="Project" order="5" visible="true" weight="0.38068634" />
       <window_info id="Structure" order="6" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Inspection Results" order="0" weight="0.32899022" />
       <window_info anchor="bottom" id="Docker" order="1" show_stripe_button="false" />
@@ -1030,20 +995,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/bgu/spl/net/srv/NonBlockingConnectionHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-723">
-          <caret line="35" column="20" selection-start-line="35" selection-start-column="20" selection-end-line="35" selection-end-column="20" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#3552#3553#0" expanded="true" />
-            <element signature="e#3589#3590#0" expanded="true" />
-            <element signature="e#3919#3920#0" expanded="true" />
-            <element signature="e#3950#3951#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/bgu/spl/net/impl/BGSServer/Messages/NOTIFICATION.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
@@ -1052,13 +1003,6 @@
             <element signature="e#186#187#0" expanded="true" />
             <element signature="e#218#219#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/bgu/spl/net/impl/ConnectionsImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="22" column="35" selection-start-line="22" selection-start-column="35" selection-end-line="22" selection-end-column="35" />
         </state>
       </provider>
     </entry>
@@ -1085,18 +1029,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="118">
           <caret line="26" column="12" selection-start-line="26" selection-start-column="12" selection-end-line="26" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/bgu/spl/net/srv/BlockingConnectionHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="39" selection-start-line="39" selection-end-line="39" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2365#2366#0" expanded="true" />
-            <element signature="e#2415#2416#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1160,37 +1092,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/bgu/spl/net/srv/BaseServer.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/bgu/spl/net/impl/BGSServer/TPCMain.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="94">
-          <caret line="49" column="140" lean-forward="true" selection-start-line="49" selection-start-column="16" selection-end-line="49" selection-end-column="140" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="55">
+          <caret line="9" column="31" lean-forward="true" selection-start-line="9" selection-start-column="31" selection-end-line="9" selection-end-column="31" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/bgu/spl/net/impl/BGSServer/ReactorMain.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="80">
-          <caret line="7" column="29" lean-forward="true" selection-start-line="7" selection-start-column="29" selection-end-line="7" selection-end-column="29" />
+          <caret line="7" column="29" selection-start-line="7" selection-start-column="29" selection-end-line="7" selection-end-column="29" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/bgu/spl/net/srv/Reactor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="109" lean-forward="true" selection-start-line="109" selection-end-line="109" />
+        <state relative-caret-position="20">
+          <caret line="109" selection-start-line="109" selection-end-line="109" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/bgu/spl/net/impl/BGSServer/TPCMain.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/bgu/spl/net/srv/BaseServer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="8" column="37" selection-start-line="8" selection-start-column="37" selection-end-line="8" selection-end-column="37" />
+        <state relative-caret-position="94">
+          <caret line="49" column="140" selection-start-line="49" selection-start-column="16" selection-end-line="49" selection-end-column="140" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1200,8 +1132,53 @@
           <caret line="34" selection-start-line="34" selection-end-line="34" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2331#2332#0" expanded="true" />
-            <element signature="e#2365#2366#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/bgu/spl/net/impl/BGSServer/bgsEncoderDecoder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1040">
+          <caret line="80" selection-start-line="80" selection-end-line="80" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#field2length#0;class#bgsEncoderDecoder#0" />
+            <element signature="method#bytes2values#0;class#bgsEncoderDecoder#0" />
+            <element signature="method#bytes2value#0;class#bgsEncoderDecoder#0" />
+            <element signature="method#concat#0;class#bgsEncoderDecoder#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/bgu/spl/net/srv/NonBlockingConnectionHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="81" column="18" lean-forward="true" selection-start-line="81" selection-start-column="18" selection-end-line="81" selection-end-column="18" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3552#3553#0" expanded="true" />
+            <element signature="e#3589#3590#0" expanded="true" />
+            <element signature="e#3919#3920#0" expanded="true" />
+            <element signature="e#3950#3951#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/bgu/spl/net/impl/ConnectionsImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1260">
+          <caret line="88" column="9" lean-forward="true" selection-start-line="83" selection-start-column="8" selection-end-line="88" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/bgu/spl/net/srv/BlockingConnectionHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="59">
+          <caret line="39" column="13" lean-forward="true" selection-start-line="39" selection-start-column="13" selection-end-line="39" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2135#2136#0" expanded="true" />
+            <element signature="e#2192#2193#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1218,29 +1195,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/bgu/spl/net/impl/BGSServer/Database.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="129">
-          <caret line="106" column="44" lean-forward="true" selection-start-line="106" selection-start-column="44" selection-end-line="106" selection-end-column="44" />
+        <state relative-caret-position="320">
+          <caret line="16" column="8" selection-start-line="16" selection-start-column="8" selection-end-line="16" selection-end-column="8" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#684#685#0" expanded="true" />
             <element signature="e#740#741#0" expanded="true" />
+            <element signature="e#5251#5252#0" expanded="true" />
             <element signature="e#5292#5293#0" expanded="true" />
+            <element signature="e#6906#6907#0" expanded="true" />
             <element signature="e#6944#6945#0" expanded="true" />
+            <element signature="e#6985#6986#0" expanded="true" />
             <element signature="e#7023#7024#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/bgu/spl/net/impl/BGSServer/bgsEncoderDecoder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-143">
-          <caret line="80" selection-start-line="80" selection-end-line="80" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#field2length#0;class#bgsEncoderDecoder#0" />
-            <element signature="method#bytes2values#0;class#bgsEncoderDecoder#0" />
-            <element signature="method#bytes2value#0;class#bgsEncoderDecoder#0" />
-            <element signature="method#concat#0;class#bgsEncoderDecoder#0" />
           </folding>
         </state>
       </provider>

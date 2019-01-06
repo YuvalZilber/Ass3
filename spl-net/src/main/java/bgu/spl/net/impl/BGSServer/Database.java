@@ -11,9 +11,10 @@ class Database {
 
     private ConnectionsImpl<Message> connections = null;
     private final Users users = new Users();
-    private ConcurrentHashMap<Integer, MessagePOST> posts = new ConcurrentHashMap<>();
+    private ConcurrentHashMap<Integer, Message> posts = new ConcurrentHashMap<>();
 
     Database() {
+        
     }
 
     void initialConnections(ConnectionsImpl<Message> connections) {
@@ -130,13 +131,13 @@ class Database {
         sender.lockWriterRelease();
 
         String[] tagged = post.getContent().split(" ");
-        tagged = Arrays.stream(tagged).filter(x -> x.charAt(0) == '@').toArray(String[]::new);
+        tagged = Arrays.stream(tagged).filter(x -> x.length()>0 && x.charAt(0) == '@').toArray(String[]::new);
         Arrays.stream(tagged).forEach(x -> {
             User reciever = getUser(x.substring(1));
             if (reciever != null) {
                 boolean good = true;
                 for (User exist : usersFollowing) {
-                    if (exist.getName() == reciever.getName())
+                    if (exist.getName().equals(reciever.getName()))
                         good = false;
                 }
                 if (good)
@@ -164,6 +165,7 @@ class Database {
     }
 
     boolean sendPM(int id, MessagePM pm) {
+        posts.put(id,pm);
         User sender = getUserAndError(6, id, true, false);
         if (sender == null) return false;
         User reciever = users.get(pm.getUsername());

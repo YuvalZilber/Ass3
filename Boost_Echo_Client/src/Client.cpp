@@ -7,7 +7,7 @@
 #include <Protocol.h>
 #include <KeyboardTask.h>
 #include "Client.h"
-#include <boost/thread.hpp>
+#include <thread>
 
 using namespace std;
 
@@ -29,15 +29,16 @@ int main(int argc, char *argv[]) {
     }
 
     KeyboardTask readTask(&connectionHandler, &protocol);
-    boost::thread th1(readTask);
-
+    std::thread th1(readTask);
 
     while (1) {
         Packet *p = connectionHandler.decodeNextMessage();
         protocol.process(p);
+        delete p;
         if (connectionHandler.IsDisconnectApproved())
             break;
     }
 
+    th1.detach();
     return 0;
 }

@@ -14,14 +14,13 @@ public class BlockingConnectionHandler<T> implements Runnable, ConnectionHandler
     private final MessageEncoderDecoder<T> encdec;
     private final Socket sock;
     private BufferedOutputStream out;
-    private volatile boolean connected = true;
 
     public BlockingConnectionHandler(Socket sock, MessageEncoderDecoder<T> reader, BidiMessagingProtocol<T> protocol) {
         this.sock = sock;
         this.encdec = reader;
         this.protocol = protocol;
     }
-
+int zeroSeries=0;
     @Override
     public void run() {
         try (Socket sock = this.sock) { //just for automatic closing
@@ -54,7 +53,6 @@ public class BlockingConnectionHandler<T> implements Runnable, ConnectionHandler
     @Override
     public void close() throws IOException {
         sock.close();
-        connected = false;
     }
 
     @Override
@@ -70,9 +68,7 @@ public class BlockingConnectionHandler<T> implements Runnable, ConnectionHandler
     }
 
     public boolean isClosed() {//maybe must delete
-        boolean output = sock.isClosed();
-        connected = !output;
-        return output;
+        return sock.isClosed();
     }
 
     public BidiMessagingProtocol<T> getProtocol() {//maybe must delete

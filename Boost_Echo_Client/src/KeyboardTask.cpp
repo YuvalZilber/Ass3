@@ -14,7 +14,6 @@ KeyboardTask::KeyboardTask(ConnectionHandler *conHand, Protocol *aProtocol) : pa
 
 unsigned long lenBytesStrNoZero(string str) {
     unsigned long strLen = str.length();
-    ////cout << "Length (char-values): " << strLen << '\n';
     setlocale(LC_ALL, "en_US.UTF-8");
     unsigned long u = 0;
     const char *c_str = str.c_str();
@@ -31,67 +30,53 @@ void KeyboardTask::operator()() {
         std::cin.getline(buf, bufsize);
         std::string line(buf);
         std::vector<std::string> words = split(line, " ");
+        packet=new Packet((short)0,"",999);
         if (words[0] == "REGISTER") {
-            //size_t size=2+words[1].length()+2+words[2].length();
             size_t size = 2 + lenBytesStrNoZero(line) - 9 + 1;//|opcode|+restOfString-|REGISTER |+\0
+            delete packet;
             packet = new Packet((short) 1, line, size);
-
-
         }
         if (words[0] == "LOGIN") {
-            //size_t size=2+words[1].length()+2+words[2].length();
-            size_t  size = 2 + lenBytesStrNoZero(line) - 6 + 1;
+            size_t size = 2 + lenBytesStrNoZero(line) - 6 + 1;
+            delete packet;
             packet = new Packet((short) 2, line, size);
 
         }
         if (words[0] == "LOGOUT") {
-            size_t  size = 2;
+            size_t size = 2;
+            delete packet;
             packet = new Packet((short) 3, line, size);
 
         }
         if (words[0] == "FOLLOW") {
-            /*
-            int userListSize=0;
-            for (int i = 2; i <words.size() ; ++i) {
-                userListSize=userListSize+words[i].length();
-            }
-            size_t size=2+1+2+userListSize;
-             */
             size_t size = 2 + lenBytesStrNoZero(line) - 7 - 1 + 1;
+            delete packet;
             packet = new Packet((short) 4, line, size);
 
         }
         if (words[0] == "POST") {
-            //size_t size=3+words[1].length();
             size_t size = 2 + lenBytesStrNoZero(line) - 5 + 1;
+            delete packet;
             packet = new Packet((short) 5, line, size);
-
         }
         if (words[0] == "PM") {
-            //size_t size=4+words[1].length()+words[2].length();
             size_t size = 2 + lenBytesStrNoZero(line) - 3 + 1;
+            delete packet;
             packet = new Packet((short) 6, line, size);
-
         }
         if (words[0] == "USERLIST") {
             size_t size = 2;
-            /*
-            int userListSize=0;
-            for (int i = 1; i <words.size() ; ++i) {
-                userListSize=userListSize+words[i].length();
-            }
-             */
+            delete packet;
             packet = new Packet((short) 7, line, size);
-
         }
         if (words[0] == "STAT") {
             size_t size = 2 + lenBytesStrNoZero(line) - 5 + 1;
+            delete packet;
             packet = new Packet((short) 3, line, size);
-
         }
 
         bool connected = connectionHandler->sendPacket(*packet);
-
+delete packet;
         if (!connected) {//if there's no connection with the server
             break;
         }
@@ -110,4 +95,9 @@ std::vector<std::string> KeyboardTask::split(std::string s, std::string delimite
     list.push_back(s);
 
     return list;
+}
+
+KeyboardTask::~KeyboardTask() {
+    if (packet != nullptr)
+        delete packet;
 }

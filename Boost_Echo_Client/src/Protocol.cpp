@@ -81,7 +81,6 @@ void Protocol::process(Packet *p) {
                     break;
                 }
 
-
             }
 
             break;
@@ -89,7 +88,7 @@ void Protocol::process(Packet *p) {
         case 11: {
             ErrorPacket *errorPacket = dynamic_cast<ErrorPacket *>(p);
             short msgopcode = errorPacket->GetmsgOpcode();
-            std::cout << "Error " << msgopcode << std::endl;
+            std::cout << "ERROR " << msgopcode << std::endl;
             break;
         }
         default: {

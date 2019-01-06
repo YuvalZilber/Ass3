@@ -6,6 +6,8 @@
 
 #IncludeRegexTransform: 
 
+../include/Client.h
+
 ../include/ConnectionHandler.h
 EncoderDecoder.h
 -
@@ -40,7 +42,17 @@ Packet.h
 ConnectionHandler.h
 ../include/ConnectionHandler.h
 
-/home/yuval/Downloads/Ass3/Boost_Echo_Client/src/KeyboardTask.cpp
+/home/yuval/Downloads/Ass3/Boost_Echo_Client/src/Client.cpp
+iostream
+-
+ConnectionHandler.h
+-
+Protocol.h
+-
 KeyboardTask.h
+-
+Client.h
+/home/yuval/Downloads/Ass3/Boost_Echo_Client/src/Client.h
+thread
 -
 

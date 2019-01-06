@@ -71,6 +71,7 @@ char *EncoderDecoder::encode(const Packet &p) {
             output.push_back(password[j]);
         }
         output.push_back('\0');
+        delete[] opcode;
     }
 
     if (splitmsg[0] == "LOGIN") {
